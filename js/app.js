@@ -82,6 +82,9 @@ var app = new Vue({
     },
     hasError: function(property) {
       return this.getError(property) != null;
+    },
+    hasResults: function() {
+      return this.results &&  this.results.length > 0;
     }
   }
 });
