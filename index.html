@@ -49,7 +49,7 @@
                 <form v-on:submit="search" method="post">
                   <div class="form-group row">
                     <div class="col-sm-8">
-                      <input type="text" class="form-control" v-model="query" v-bind:class="{'is-invalid': hasError('query')}" id="query" placeholder="Query">
+                      <input type="search" class="form-control" v-model="query" v-bind:class="{'is-invalid': hasError('query')}" id="query" placeholder="Query">
                       <div class="invalid-feedback" v-if="hasError('query')" v-text="getError('query')"></div>
                     </div>
                     <div class="col-sm-2">
