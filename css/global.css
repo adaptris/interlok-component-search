@@ -1,0 +1,99 @@
+:root {
+  --adapter-color: #2FAAB1 ;
+  --channel-color: #A09D8F;
+  --workflow-color: #68C469;
+  --consumer-color: #FF6C6C;
+  --producer-color: #6C79FF;
+  --service-color: #F0B46E;
+  --service-collection-color: #F89347; /* & #F16903 (for label boxes) */   
+  --connection-color: #FFDB6C;
+  --interceptor-color: #DFB0F9;
+  --advanced-color: #98E4BC;
+}
+
+.copyright-date:after {
+    content: "2021";
+}
+
+.loading-overlay {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	z-index: 500;
+	text-align: center;
+	vertical-align: middle;
+	height: 100%;
+	min-height: 70px;
+	width: 100%;
+	margin: auto;
+	background-color: rgba(250, 250, 250, 0.5);
+}
+
+.loading-overlay-inner {
+	position: relative;
+	top: 20%;
+}
+
+/* Component Type Border Color */
+.border-adapter {
+ 	border-color: var(--adapter-color)!important;
+}
+.border-channel {
+	border-color: var(--channel-color)!important;
+}
+.border-workflow {
+	border-color: var(--workflow-color)!important;
+}
+.border-consumer {
+	border-color: var(--consumer-color)!important;
+}
+.border-producer {
+	border-color: var(--producer-color)!important;
+}
+.border-service {
+	border-color: var(--service-color)!important;
+}
+.border-service-collection {
+	border-color: var(--service-collection-color)!important;
+}
+.border-connection {
+	border-color: var(--connection-color)!important;
+}
+.border-interceptor {
+	border-color: var(--interceptor-color)!important;
+}
+.border-extension {
+	border-color: var(--advanced-color)!important;
+}
+
+/* Component Type Badge Color */
+.badge-adapter {
+ 	background-color: var(--adapter-color)!important;
+}
+.badge-channel {
+	background-color: var(--channel-color)!important;
+}
+.badge-workflow {
+	background-color: var(--workflow-color)!important;
+}
+.badge-consumer {
+	background-color: var(--consumer-color)!important;
+}
+.badge-producer {
+	background-color: var(--consumer-color)!important;
+}
+.badge-service {
+	background-color: var(--service-color)!important;
+}
+.badge-service-collection {
+	background-color: var(--service-collection-color)!important;
+}
+.badge-connection {
+	background-color: var(--connection-color)!important;
+}
+.badge-interceptor {
+	background-color: var(--interceptor-color)!important;
+}
+.badge-extension {
+	background-color: var(--advanced-color)!important;
+}

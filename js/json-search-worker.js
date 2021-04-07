@@ -1,0 +1,106 @@
+importScripts("https://cdn.jsdelivr.net/npm/fuse.js@6.4.6");
+importScripts("./utils.js");
+
+var adp = adp || {};
+
+(function(utils, Fuse) {
+
+  let fuseCache;
+
+  const fuseOptions = {
+    includeScore: true,
+    minMatchCharLength: 2,
+    threshold: 0.3,
+    useExtendedSearch: true,
+    findAllMatches: true,
+    /*ignoreFieldNorm: true,*/
+    keys: [
+      {
+        name: "className",
+        weight: 0.9
+      },
+      {
+        name: "packageName",
+        weight: 0.5
+      },
+      {
+        name: "alias",
+        weight: 0.9
+      },
+      {
+        name: "componentType",
+        weight: 0.5
+      },
+      {
+        name: "profile.tag",
+        weight: 0.9
+      },
+      {
+        name: "projectInfo.Implementation-Title",
+        weight: 0.5
+      },
+      {
+        name: "projectInfo.Implementation-Id.",
+        weight: 0.5
+      }
+    ]
+  }
+
+  async function fetchIndexJson(jsonFileURL) {
+    const response = await fetch(jsonFileURL);
+
+    if (!response.ok) {
+      const message = `Could not open index file: ${response.status} -  ${response.statusText}.`;
+      throw new Error(message);
+    }
+
+    const json = await response.json();
+    return json;
+  }
+
+  async function prepareSearch(jsonFileURL) {
+    if (fuseCache === undefined || fuseCache === null) {
+
+      // Fetch the index json
+      const json = await fetchIndexJson(jsonFileURL);
+
+      // Get the components array
+      const components = json.components || [];
+
+      // Create a new instance of Fuse
+      const fuse = new Fuse(components, fuseOptions)
+      fuseCache = fuse;
+    }
+
+    return fuseCache;
+  }
+
+  function searchComponents(fuse, query) {
+    return fuse.search(query);
+  }
+
+  function preparePagination(json) {
+    return {
+      totalCount: json.length,
+      components: json
+    };
+  }
+
+  onmessage = function(e) {
+    console.log("Worker: Message received from main script");
+    if (!utils.isEmpty(e.data.q) && e.data.q.length > 1) {
+      const jsonFileURL = e.data.jsonFileURL;
+      const query = e.data.q;
+
+      prepareSearch(jsonFileURL)
+      .then(fuse => searchComponents(fuse, query))
+      .then(results => preparePagination(results))
+      .then(results => postMessage({results}))
+      .catch(error => setTimeout(function() { throw error; }));
+
+    } else {
+      postMessage({results: [], error: "Use more than 1 character"})
+    }
+  }
+
+})(adp.utils, Fuse);
