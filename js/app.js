@@ -1,10 +1,14 @@
 // Register adp to vue
 Vue.prototype.adp = adp;
+
+const searchWorker = new Worker("./js/json-search-worker.js");
+
 const versions = ["4.0.0-RELEASE"];
 var app = new Vue({
   el: "#app",
   data: function() {
     return {
+      searchWorker: null,
       errors: {},
       searchMessage: null,
       loading: false,
@@ -24,26 +28,29 @@ var app = new Vue({
       self.loading = true;
       self.searchMessage = "Searching components...";
 
-      var myWorker = new Worker("./js/json-search-worker.js");
-
-      myWorker.postMessage({ q: self.query, v: self.version, jsonFileURL: `../data/interlok-component-${self.version.toLowerCase()}.json` });
-
-      myWorker.onmessage = function(e) {
-        const resultsJson = e.data ? e.data.results : {};
-        console.log("Message received from worker");
-        self.total = resultsJson.totalCount;
-        self.results = resultsJson.components;
-        self.loading = false;
-      }
-
-      myWorker.onerror = function(error) {
-        self.searchMessage = null;
-        self.results = [];
-        if (error && error.message) {
-          self.errors["global"] = error.message;
+      if (!self.searchWorker) {
+        
+        searchWorker.onmessage = function(e) {
+          const resultsJson = e.data ? e.data.results : {};
+          console.log("Message received from worker");
+          self.total = resultsJson.totalCount;
+          self.results = resultsJson.components;
+          self.loading = false;
         }
-        self.loading = false;
+  
+        searchWorker.onerror = function(error) {
+          self.searchMessage = null;
+          self.results = [];
+          if (error && error.message) {
+            self.errors["global"] = error.message;
+          }
+          self.loading = false;
+        }
+        
+        self.searchWorker = searchWorker;
       }
+      
+      searchWorker.postMessage({ q: self.query, v: self.version, jsonFileURL: `../data/interlok-component-${self.version.toLowerCase()}.json` });
     },
     search: function(event) {
       event.preventDefault();
