@@ -49,4 +49,9 @@ var adp = adp || {};
   }
   adp.utils.includesIgnoreCase = includesIgnoreCase;
 
+  function purify(html) {
+    return html ? DOMPurify.sanitize(html, {FORBID_TAGS: ['a']}) : html;
+  }
+  adp.utils.purify = purify;
+
 })(adp);

@@ -270,7 +270,7 @@ Vue.component("search-results-result", {
             <span class="text-muted" v-text="summary"></span>
             <a href="#" v-on:click.prevent="toggleFullDesc" v-text="showFullDesc ? 'Less...' : 'More...'"></a>
           </p>
-          <p class="card-text mb-2" v-show="showFullDesc" v-html="result.item.descriptionHtml || 'No description'"></p>
+          <p class="card-text mb-2" v-show="showFullDesc" v-html="adp.utils.purify(result.item.descriptionHtml) || 'No description'"></p>
           <p class="card-text mb-2" v-if="result.item.projectInfo">
             <small class="text-info">{{ result.item.projectInfo["Implementation-Title"] + ' ' + result.item.projectInfo["Implementation-Version"] }}</small>
           </p>
