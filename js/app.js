@@ -6,7 +6,7 @@ const searchWorker = new Worker("./js/json-search-worker.js");
 const versions = ["4.0.0-RELEASE"];
 var app = new Vue({
   el: "#app",
-  data: function() {
+  data: function () {
     return {
       searchWorker: null,
       errors: {},
@@ -21,24 +21,27 @@ var app = new Vue({
     };
   },
   computed: {
+    hasResult: function () {
+      return this.results && this.results.length > 0;
+    }
   },
   methods: {
-    doSearch: function() {
+    doSearch: function () {
       var self = this;
       self.loading = true;
       self.searchMessage = "Searching components...";
 
       if (!self.searchWorker) {
-        
-        searchWorker.onmessage = function(e) {
+
+        searchWorker.onmessage = function (e) {
           const resultsJson = e.data ? e.data.results : {};
           console.log("Message received from worker");
           self.total = resultsJson.totalCount;
           self.results = resultsJson.components;
           self.loading = false;
         }
-  
-        searchWorker.onerror = function(error) {
+
+        searchWorker.onerror = function (error) {
           self.searchMessage = null;
           self.results = [];
           if (error && error.message) {
@@ -46,25 +49,25 @@ var app = new Vue({
           }
           self.loading = false;
         }
-        
+
         self.searchWorker = searchWorker;
       }
-      
+
       searchWorker.postMessage({ q: self.query, v: self.version, jsonFileURL: `../data/interlok-component-${self.version.toLowerCase()}.json` });
     },
-    search: function(event) {
+    search: function (event) {
       event.preventDefault();
       this.from = 0;
       if (this.validate(event)) {
         this.doSearch();
       }
     },
-    searchPaginate: function(msg) {
+    searchPaginate: function (msg) {
       this.from = msg.from;
       this.size = msg.size;
       this.doSearch();
     },
-    validate: function(event) {
+    validate: function (event) {
       this.searchMessage = null;
       this.errors = {};
       if (this.query && this.version) {
@@ -77,14 +80,11 @@ var app = new Vue({
         this.errors["version"] = "Version required.";
       }
     },
-    getError: function(property) {
+    getError: function (property) {
       return this.errors[property];
     },
-    hasError: function(property) {
+    hasError: function (property) {
       return this.getError(property) != null;
-    },
-    hasResults: function() {
-      return this.results &&  this.results.length > 0;
     }
   }
 });
@@ -94,18 +94,18 @@ Vue.component("search-results", {
     total: Number,
     results: Array
   },
-  data: function() {
+  data: function () {
     return {
       size: 10
     }
   },
   computed: {
-    hasResult: function() {
-      return this.results.length > 0;
+    hasResult: function () {
+      return this.results && this.results.length > 0;
     }
   },
   methods: {
-    paginate: function(msg) {
+    paginate: function (msg) {
       this.$emit('paginate', { from: msg.from, size: msg.size });
     }
   },
@@ -127,17 +127,17 @@ Vue.component("search-results-pagination", {
     total: Number,
     size: Number,
   },
-  data: function() {
+  data: function () {
     return {
       selected: 0,
       limit: 5
     }
   },
   computed: {
-    pageCount: function() {
+    pageCount: function () {
       return Math.ceil(this.total / this.size);
     },
-    pages: function() {
+    pages: function () {
       var pages = [];
       for (var i = 0; i < this.pageCount; i++) {
         if (this.selected - this.limit <= i && this.selected + this.limit >= i) {
@@ -151,34 +151,34 @@ Vue.component("search-results-pagination", {
       }
       return pages;
     },
-    firstPageSelected: function() {
+    firstPageSelected: function () {
       return this.selected === 0;
     },
-    lastPageSelected: function() {
+    lastPageSelected: function () {
       return this.selected === this.pageCount - 1 || this.pageCount === 0;
     }
   },
   methods: {
-    paginate: function() {
+    paginate: function () {
       this.$emit('paginate', { from: this.selected * this.size, size: this.size });
     },
-    setPage: function(page) {
+    setPage: function (page) {
       this.selected = page.index;
       this.paginate();
     },
-    firstPage: function() {
+    firstPage: function () {
       this.selected = 0;
       this.paginate();
     },
-    previous: function() {
+    previous: function () {
       this.selected = Math.max(0, this.selected - 1);
       this.paginate();
     },
-    next: function() {
+    next: function () {
       this.selected = this.selected + 1;
       this.paginate();
     },
-    lastPage: function() {
+    lastPage: function () {
       this.selected = this.pageCount - 1;
       this.paginate();
     }
@@ -211,42 +211,42 @@ Vue.component("search-results-result", {
   props: {
     result: Object
   },
-  data: function() {
+  data: function () {
     return {
       showFullDesc: false,
     }
   },
   computed: {
-    componentTypeClass: function() {
+    componentTypeClass: function () {
       return this.result.item.componentType == "object" ? "extension" : this.result.item.componentType;
     },
-    iconClass: function() {
+    iconClass: function () {
       return "fa-" + this.componentTypeClass;
     },
-    borderClass: function() {
+    borderClass: function () {
       return "border-" + this.componentTypeClass;
     },
-    title: function() {
+    title: function () {
       return adp.utils.humanyze(this.result.item.alias || this.result.item.className);
     },
-    summary: function() {
+    summary: function () {
       return this.result.item.profile && this.result.item.profile.summary ? this.result.item.profile.summary : this.description.substring(0, Math.min(this.description.length, 50));
     },
-    description: function() {
+    description: function () {
       return this.result.item.description || "";
     },
-    author: function() {
+    author: function () {
       return this.result.item.profile && this.result.item.profile.author ? this.result.item.profile.author : "";
     },
-    since: function() {
+    since: function () {
       return this.result.item.profile && this.result.item.profile.since ? this.result.item.profile.since : "";
     },
-    tags: function() {
+    tags: function () {
       return this.result.item.profile && this.result.item.profile.tag ? this.result.item.profile.tag.split(",") : [];
     }
   },
   methods: {
-    toggleFullDesc: function() {
+    toggleFullDesc: function () {
       this.showFullDesc = !this.showFullDesc;
     }
   },

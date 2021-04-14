@@ -1,107 +1,119 @@
 <!doctype html>
-  <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
-  <!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
-  <!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
-  <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  
-    <title>Interlok Component Search</title>
-    <meta name="description" content="Interlok Component Search - Index">
-    <meta name="author" content="Adaptris Ltd">
-  
-    <meta name="viewport" content="width=device-width">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-    <link href="./css/font-awesome/css/adaptris-font-awesome.css" rel="stylesheet">
-    <link href="./css/global.css" rel="stylesheet">
-        
-    <link href="./favicon.ico" rel="icon" type="image/x-icon" />
-  </head>
-  <body>
-    <div id="app">
-      <header class="mb-4 sticky-top">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top search-bar">
-          <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-              <img src="./img/logo.png" width="30" height="30" class="d-inline-block align-text-top" alt="Interlok Logo">
-              <span>Interlok Component Search</span>
-            </a>
-          </div>
-        </nav>
-      </header>
-      
-        <div class="toast-container position-absolute p-3 top-0 end-0" id="toastPlacement" style="z-index: 9999">
-        <div class="toast align-items-center text-white bg-error border-0" v-bind:class="{'show': hasError('global')}" role="alert" aria-live="assertive" aria-atomic="true">
-          <div class="d-flex" v-show="hasError('global')" >
-            <div class="toast-body">
-              <div class="text-danger" v-if="hasError('global')" v-text="getError('global')"></div>
-            </div>
-            <!-- <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button> -->
-          </div>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>Interlok Component Search</title>
+  <meta name="description" content="Interlok Component Search - Index">
+  <meta name="author" content="Adaptris Ltd">
+
+  <meta name="viewport" content="width=device-width">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+  <link href="./css/font-awesome/css/adaptris-font-awesome.css" rel="stylesheet">
+  <link href="./css/global.css" rel="stylesheet">
+
+  <link href="./favicon.ico" rel="icon" type="image/x-icon" />
+</head>
+
+<body>
+  <div id="app">
+    <header class="mb-4 sticky-top">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top search-bar">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <img src="./img/logo.png" width="30" height="30" class="d-inline-block align-text-top" alt="Interlok Logo">
+            <span>Interlok Component Search</span>
+          </a>
         </div>
+      </nav>
+    </header>
+
+    <div class="toast-container position-absolute p-3 top-0 end-0" id="toastPlacement" style="z-index: 9999">
+      <div class="toast align-items-center text-white bg-error border-0" v-bind:class="{'show': hasError('global')}"
+        role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex" v-show="hasError('global')">
+          <div class="toast-body">
+            <div class="text-danger" v-if="hasError('global')" v-text="getError('global')"></div>
+          </div>
+          <!-- <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button> -->
         </div>
-      <section id="main" class="mb-4">
-        <div class="container">
-          <nav class="navbar navbar-expand-lg navbar-light bg-light rounded mb-4 sticky-top">
-            <div class="container">
-              <div class="col align-self-center">
-                <form v-on:submit="search" method="post">
-                  <div class="form-group row">
-                    <div class="col-sm-8">
-                      <input type="search" class="form-control" v-model="query" v-bind:class="{'is-invalid': hasError('query')}" id="query" placeholder="Query">
-                      <div class="invalid-feedback" v-if="hasError('query')" v-text="getError('query')"></div>
-                    </div>
-                    <div class="col-sm-2">
-                      <select class="form-select" aria-label="Version" v-model="version" v-bind:class="{'is-invalid': hasError('version')}" id="version">
-                        <option>4.0.0-RELEASE</option>
-                      </select>
-                      <div class="invalid-feedback" v-if="hasError('version')" v-text="getError('version')"></div>
-                    </div>
-                    <div class="col-sm-2">
-                      <button type="submit" class="btn btn-primary btn-block" v-bind:disabled="loading">
-                        <i v-show="!loading" class="fa fa-search"></i>
-                        <i v-show="loading" class="fa fa-spinner fa-spin"></i>
-                        Search
-                      </button>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </nav>
-          <div class="row justify-content-md-center mb-4">
+      </div>
+    </div>
+    <section id="main" class="mb-4">
+      <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light rounded mb-4 sticky-top">
+          <div class="container">
             <div class="col align-self-center">
-              <div style="position: relative; min-height: 50px">
-                <div class="loading-overlay" v-show="loading">
-                  <div class="loading-overlay-inner">
-                    <div class="text-muted" v-if="searchMessage" v-text="searchMessage"></div>
-                    <i class="fa fa-spinner fa-spin"></i>
+              <form v-on:submit="search" method="post">
+                <div class="form-group row">
+                  <div class="col-sm-8">
+                    <input type="search" class="form-control" v-model="query"
+                      v-bind:class="{'is-invalid': hasError('query')}" id="query" placeholder="Query">
+                    <div class="invalid-feedback" v-if="hasError('query')" v-text="getError('query')"></div>
+                  </div>
+                  <div class="col-sm-2">
+                    <select class="form-select" aria-label="Version" v-model="version"
+                      v-bind:class="{'is-invalid': hasError('version')}" id="version">
+                      <option>4.0.0-RELEASE</option>
+                    </select>
+                    <div class="invalid-feedback" v-if="hasError('version')" v-text="getError('version')"></div>
+                  </div>
+                  <div class="col-sm-2">
+                    <button type="submit" name="search" class="btn btn-primary btn-block" v-bind:disabled="loading">
+                      <i v-show="!loading" class="fa fa-search"></i>
+                      <i v-show="loading" class="fa fa-spinner fa-spin"></i>
+                      Search
+                    </button>
                   </div>
                 </div>
-                <search-results v-bind:results="results" v-bind:total="total" v-on:paginate="searchPaginate"></search-results>
+              </form>
+            </div>
+          </div>
+        </nav>
+        <div class="row justify-content-md-center mb-4">
+          <div class="col align-self-center">
+            <div style="position: relative; min-height: 50px">
+              <div class="loading-overlay" v-show="loading">
+                <div class="loading-overlay-inner">
+                  <div class="text-muted" v-if="searchMessage" v-text="searchMessage"></div>
+                  <i class="fa fa-spinner fa-spin"></i>
+                </div>
               </div>
+              <search-results v-bind:results="results" v-bind:total="total" v-on:paginate="searchPaginate">
+              </search-results>
             </div>
           </div>
         </div>
-      </section>
-      
-      <footer class="" v-bind:class="{'fixed-bottom': !hasResults()}">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <div class="container-fluid">
-            <a target="_new" v-bind:href="adp.link.adpBase">
-              &copy;&nbsp;Adaptris Limited <span class="copyright-date"></span>
-            </a>
-          </div>
-        </nav>
-      </footer>
-    </div>
-    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/dompurify@2.2.7" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js" crossorigin="anonymous"></script>
-    <script src="./js/global.js"></script>
-    <script src="./js/utils.js"></script>
-    <script src="./js/app.js"></script>
-  </body>
+      </div>
+    </section>
+
+    <footer class="" v-bind:class="{'fixed-bottom': !hasResults}">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a target="_new" v-bind:href="adp.link.adpBase">
+            &copy;&nbsp;Adaptris Limited <span class="copyright-date"></span>
+          </a>
+        </div>
+      </nav>
+    </footer>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dompurify@2.2.7" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js" crossorigin="anonymous"></script>
+  <script src="./js/global.js"></script>
+  <script src="./js/utils.js"></script>
+  <script src="./js/app.js"></script>
+</body>
+
 </html>
