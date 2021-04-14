@@ -14,6 +14,8 @@ var app = new Vue({
       loading: false,
       query: null,
       version: versions[0],
+      searchInstances: false,
+      originalSelected: 0,
       from: 0,
       size: 10,
       total: 0,
@@ -23,16 +25,18 @@ var app = new Vue({
   computed: {
     hasResult: function () {
       return this.results && this.results.length > 0;
+    },
+    paginatedResults: function () {
+      return this.results ? this.results.slice(this.from, this.from + this.size) : [];
+    },
+    placeholder: function () {
+      return this.searchInstances ? "ClassName:Query" : "Query";
     }
   },
   methods: {
-    doSearch: function () {
+    getOrInitWorker: function () {
       var self = this;
-      self.loading = true;
-      self.searchMessage = "Searching components...";
-
       if (!self.searchWorker) {
-
         searchWorker.onmessage = function (e) {
           const resultsJson = e.data ? e.data.results : {};
           console.log("Message received from worker");
@@ -52,20 +56,68 @@ var app = new Vue({
 
         self.searchWorker = searchWorker;
       }
+      return self.searchWorker;
+    },
+    doSearchComponents: function () {
+      var self = this;
+      self.loading = true;
+      self.searchMessage = "Searching components...";
 
-      searchWorker.postMessage({ q: self.query, v: self.version, jsonFileURL: `../data/interlok-component-${self.version.toLowerCase()}.json` });
+      const searchWorker = self.getOrInitWorker();
+
+      searchWorker.postMessage({ q: self.query, v: self.version, type: "components", jsonFileURL: `../data/interlok-component-${self.version.toLowerCase()}.json` });
+    },
+    doSearchInstances: function () {
+      var self = this;
+      self.loading = true;
+      self.searchMessage = "Searching components...";
+
+      const searchWorker = self.getOrInitWorker();
+
+      const queryParts = adp.utils.trimToEmpty(self.query).split(":");
+      const subQuery = queryParts.length > 1 ? queryParts[1] : "";
+
+      const query = {
+        $and: [
+          { parents: adp.utils.addPrefix(queryParts[0], "=") }
+        ]
+      }
+
+      if (subQuery !== "") {
+        query.$and[1] = {
+          $or: [
+            { fullClassName: subQuery },
+            { className: subQuery },
+            { packageName: subQuery },
+            { alias: subQuery },
+            { componentType: subQuery },
+            { $path: "profile.tag", $val: subQuery }
+          ]
+        }
+      }
+
+      searchWorker.postMessage({ q: query, v: self.version, type: "instances", jsonFileURL: `../data/interlok-component-${self.version.toLowerCase()}.json` });
     },
     search: function (event) {
       event.preventDefault();
+      this.originalSelected = 0;
       this.from = 0;
       if (this.validate(event)) {
         this.doSearch();
       }
     },
+    doSearch: function () {
+      if (this.searchInstances) {
+        this.doSearchInstances();
+      } else {
+        this.doSearchComponents();
+      }
+    },
     searchPaginate: function (msg) {
+      this.originalSelected = msg.selected;
       this.from = msg.from;
       this.size = msg.size;
-      this.doSearch();
+      console.log(this.selected, this.from, this.size);
     },
     validate: function (event) {
       this.searchMessage = null;
@@ -92,7 +144,8 @@ var app = new Vue({
 Vue.component("search-results", {
   props: {
     total: Number,
-    results: Array
+    results: Array,
+    originalSelected: Number
   },
   data: function () {
     return {
@@ -106,7 +159,7 @@ Vue.component("search-results", {
   },
   methods: {
     paginate: function (msg) {
-      this.$emit('paginate', { from: msg.from, size: msg.size });
+      this.$emit('paginate', { selected: msg.selected, from: msg.from, size: msg.size });
     }
   },
   template: `
@@ -117,7 +170,7 @@ Vue.component("search-results", {
       <ul class="list-unstyled">
        <search-results-result v-for="result in results" v-bind:result="result" v-bind:key="result.fullClassName"></search-results-result>
       </ul>
-      <search-results-pagination v-show="hasResult" v-bind:total="total" v-bind:size="size" v-on:paginate="paginate"></search-results-pagination>
+      <search-results-pagination v-show="hasResult" v-bind:total="total" v-bind:original-selected="originalSelected" v-bind:size="size" v-on:paginate="paginate"></search-results-pagination>
     </div>
   `
 });
@@ -126,11 +179,17 @@ Vue.component("search-results-pagination", {
   props: {
     total: Number,
     size: Number,
+    originalSelected: Number
   },
   data: function () {
     return {
       selected: 0,
       limit: 5
+    }
+  },
+  updated: function () {
+    if (this.originalSelected !== this.selected) {
+      this.selected = 0
     }
   },
   computed: {
@@ -160,7 +219,7 @@ Vue.component("search-results-pagination", {
   },
   methods: {
     paginate: function () {
-      this.$emit('paginate', { from: this.selected * this.size, size: this.size });
+      this.$emit('paginate', { selected: this.selected, from: this.selected * this.size, size: this.size });
     },
     setPage: function (page) {
       this.selected = page.index;
@@ -187,7 +246,7 @@ Vue.component("search-results-pagination", {
     <nav aria-label="...">
       <ul class="pagination">
         <li class="page-item" v-bind:class="[firstPageSelected ? 'disabled' : '']">
-          <a class="page-link" v-on:click="firstPage" v-on:keyup.enter="firstPage" v-bind:tabindex="firstPageSelected ? -1 : 0">First</a>
+          <a class="page-link" href="#" v-on:click="firstPage" v-on:keyup.enter="firstPage" v-bind:tabindex="firstPageSelected ? -1 : 0">First</a>
         </li>
         <li class="page-item" v-bind:class="[firstPageSelected ? 'disabled' : '']">
           <a class="page-link" href="#" v-on:click="previous">Previous</a>
@@ -200,7 +259,7 @@ Vue.component("search-results-pagination", {
           <a class="page-link" href="#" v-on:click="next">Next</a>
         </li>
         <li class="page-item" v-bind:class="[lastPageSelected ? 'disabled' : '']">
-          <a class="page-link" v-on:click="lastPage" v-on:keyup.enter="lastPage" v-bind:tabindex="lastPageSelected ? -1 : 0">Last</a>
+          <a class="page-link" href="#" v-on:click="lastPage" v-on:keyup.enter="lastPage" v-bind:tabindex="lastPageSelected ? -1 : 0">Last</a>
         </li>
       </ul>
     </nav>

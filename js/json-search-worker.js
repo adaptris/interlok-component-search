@@ -3,9 +3,11 @@ importScripts("./utils.js");
 
 var adp = adp || {};
 
-(function(utils, Fuse) {
+(function (utils, Fuse) {
 
-  let fuseCache;
+  let fuseComponentsCache;
+
+  let fuseInstancesCache;
 
   const fuseOptions = {
     includeScore: true,
@@ -15,6 +17,57 @@ var adp = adp || {};
     findAllMatches: true,
     /*ignoreFieldNorm: true,*/
     keys: [
+      {
+        name: "fullClassName",
+        weight: 0.9
+      },
+      {
+        name: "className",
+        weight: 0.9
+      },
+      {
+        name: "packageName",
+        weight: 0.5
+      },
+      {
+        name: "alias",
+        weight: 0.9
+      },
+      {
+        name: "componentType",
+        weight: 0.5
+      },
+      {
+        name: "profile.tag",
+        weight: 0.9
+      },
+      {
+        name: "projectInfo.Implementation-Title",
+        weight: 0.5
+      },
+      {
+        name: "projectInfo.Implementation-Id.",
+        weight: 0.5
+      }
+    ]
+  }
+
+  const fuseInstancesOptions = {
+    includeScore: true,
+    minMatchCharLength: 2,
+    threshold: 0.3,
+    useExtendedSearch: true,
+    findAllMatches: true,
+    /*ignoreFieldNorm: true,*/
+    keys: [
+      {
+        name: "parents",
+        weight: 5
+      },
+      {
+        name: "fullClassName",
+        weight: 0.9
+      },
       {
         name: "className",
         weight: 0.9
@@ -58,8 +111,8 @@ var adp = adp || {};
     return json;
   }
 
-  async function prepareSearch(jsonFileURL) {
-    if (fuseCache === undefined || fuseCache === null) {
+  async function prepareSearch(jsonFileURL, type) {
+    if (fuseComponentsCache === undefined || fuseComponentsCache === null) {
 
       // Fetch the index json
       const json = await fetchIndexJson(jsonFileURL);
@@ -67,15 +120,17 @@ var adp = adp || {};
       // Get the components array
       const components = json.components || [];
 
-      // Create a new instance of Fuse
-      const fuse = new Fuse(components, fuseOptions)
-      fuseCache = fuse;
+      // Create a new instance of Fuse for components search
+      fuseComponentsCache = new Fuse(components, fuseOptions)
+
+      // Create a new instance of Fuse for instances search
+      fuseInstancesCache = new Fuse(components, fuseInstancesOptions)
     }
 
-    return fuseCache;
+    return type === "instances" ? fuseInstancesCache : fuseComponentsCache;
   }
 
-  function searchComponents(fuse, query) {
+  function doSearch(fuse, query) {
     return fuse.search(query);
   }
 
@@ -86,20 +141,22 @@ var adp = adp || {};
     };
   }
 
-  onmessage = function(e) {
+  onmessage = function (e) {
     console.log("Worker: Message received from main script");
-    if (!utils.isEmpty(e.data.q) && e.data.q.length > 1) {
+    if (!utils.isEmpty(e.data.q) && (e.data.q.constructor == Object || e.data.q.length > 1)) {
       const jsonFileURL = e.data.jsonFileURL;
       const query = e.data.q;
+      const type = e.data.type;
+      console.log(query, type);
 
-      prepareSearch(jsonFileURL)
-      .then(fuse => searchComponents(fuse, query))
-      .then(results => preparePagination(results))
-      .then(results => postMessage({results}))
-      .catch(error => setTimeout(function() { throw error; }));
+      prepareSearch(jsonFileURL, type)
+        .then(fuse => doSearch(fuse, query))
+        .then(results => preparePagination(results))
+        .then(results => postMessage({ results }))
+        .catch(error => setTimeout(function () { throw error; }));
 
     } else {
-      postMessage({results: [], error: "Use more than 1 character"})
+      postMessage({ results: [], error: "Use more than 1 character" })
     }
   }
 

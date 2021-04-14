@@ -1,6 +1,6 @@
 var adp = adp || {};
 
-(function(adp) {
+(function (adp) {
   adp.utils = adp.utils || {};
 
   function humanyze(str) {
@@ -15,7 +15,7 @@ var adp = adp || {};
         } else {
           var split = splitBySpace[i].split(/[_\-\.]/g);
           for (var j = 0; j < split.length; j++) {
-            split[j].replace(/((^[a-z0-9\W]+)|([A-Z]+[0-9\W]+[A-Z]+)|([A-Z]+[0-9\W]+[0-9]+)|([A-Z]+[0-9\W]{1}[A-Z]*)|([A-Z]{1,2}[a-z0-9\W]+)|([A-Z]+(?=([A-Z][a-z0-9\W])|($))))/g, function(match) {
+            split[j].replace(/((^[a-z0-9\W]+)|([A-Z]+[0-9\W]+[A-Z]+)|([A-Z]+[0-9\W]+[0-9]+)|([A-Z]+[0-9\W]{1}[A-Z]*)|([A-Z]{1,2}[a-z0-9\W]+)|([A-Z]+(?=([A-Z][a-z0-9\W])|($))))/g, function (match) {
               words.push(match);
             });
           }
@@ -39,10 +39,21 @@ var adp = adp || {};
   }
   adp.utils.isEmpty = isEmpty;
 
+  function trimToEmpty(str) {
+    return isEmpty(str) ? "" : str.trim();
+  }
+  adp.utils.trimToEmpty = trimToEmpty;
+
   function toLowerCase(str) {
     return isEmpty(str) ? "" : str.toLowerCase();
   }
   adp.utils.toLowerCase = toLowerCase;
+
+  function addPrefix(str, prefix) {
+    const trimmedStr = trimToEmpty(str);
+    return trimmedStr.startsWith(prefix) ? trimmedStr : trimToEmpty(prefix) + trimmedStr;
+  }
+  adp.utils.addPrefix = addPrefix;
 
   function includesIgnoreCase(str1, str2) {
     return toLowerCase(str1).includes(toLowerCase(str2));
@@ -50,7 +61,7 @@ var adp = adp || {};
   adp.utils.includesIgnoreCase = includesIgnoreCase;
 
   function purify(html) {
-    return html ? DOMPurify.sanitize(html, {FORBID_TAGS: ['a']}) : html;
+    return html ? DOMPurify.sanitize(html, { FORBID_TAGS: ['a'] }) : html;
   }
   adp.utils.purify = purify;
 

@@ -54,9 +54,9 @@
             <div class="col align-self-center">
               <form v-on:submit="search" method="post">
                 <div class="form-group row">
-                  <div class="col-sm-8">
+                  <div class="col-sm-7">
                     <input type="search" class="form-control" v-model="query"
-                      v-bind:class="{'is-invalid': hasError('query')}" id="query" placeholder="Query">
+                      v-bind:class="{'is-invalid': hasError('query')}" id="query" v-bind:placeholder="placeholder">
                     <div class="invalid-feedback" v-if="hasError('query')" v-text="getError('query')"></div>
                   </div>
                   <div class="col-sm-2">
@@ -66,8 +66,12 @@
                     </select>
                     <div class="invalid-feedback" v-if="hasError('version')" v-text="getError('version')"></div>
                   </div>
-                  <div class="col-sm-2">
-                    <button type="submit" name="search" class="btn btn-primary btn-block" v-bind:disabled="loading">
+                  <div class="col-sm-3">
+                    <div class="form-check-inline form-switch">
+                      <input class="form-check-input" type="checkbox" id="searchInstances" v-model="searchInstances">
+                      <label class="form-check-label" for="searchInstances">Instances</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block" v-bind:disabled="loading">
                       <i v-show="!loading" class="fa fa-search"></i>
                       <i v-show="loading" class="fa fa-spinner fa-spin"></i>
                       Search
@@ -87,7 +91,8 @@
                   <i class="fa fa-spinner fa-spin"></i>
                 </div>
               </div>
-              <search-results v-bind:results="results" v-bind:total="total" v-on:paginate="searchPaginate">
+              <search-results v-bind:results="paginatedResults" v-bind:total="total"
+                v-bind:original-selected="originalSelected" v-on:paginate="searchPaginate">
               </search-results>
             </div>
           </div>
