@@ -62,7 +62,9 @@
                   <div class="col-sm-2">
                     <select class="form-select" aria-label="Version" v-model="version"
                       v-bind:class="{'is-invalid': hasError('version')}" id="version">
-                      <option>4.0.0-RELEASE</option>
+                      <option v-for="ver in versions" v-bind:value="ver">
+                        {{ver}}
+                      </option>
                     </select>
                     <div class="invalid-feedback" v-if="hasError('version')" v-text="getError('version')"></div>
                   </div>

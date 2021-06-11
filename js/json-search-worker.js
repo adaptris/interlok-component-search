@@ -5,9 +5,9 @@ var adp = adp || {};
 
 (function (utils, Fuse) {
 
-  let fuseComponentsCache;
+  let fuseComponentsCaches = {};
 
-  let fuseInstancesCache;
+  let fuseInstancesCaches = {};
 
   const fuseOptions = {
     includeScore: true,
@@ -112,7 +112,7 @@ var adp = adp || {};
   }
 
   async function prepareSearch(jsonFileURL, type) {
-    if (fuseComponentsCache === undefined || fuseComponentsCache === null) {
+    if (fuseComponentsCaches[jsonFileURL] === undefined || fuseComponentsCaches[jsonFileURL] === null) {
 
       // Fetch the index json
       const json = await fetchIndexJson(jsonFileURL);
@@ -121,13 +121,13 @@ var adp = adp || {};
       const components = json.components || [];
 
       // Create a new instance of Fuse for components search
-      fuseComponentsCache = new Fuse(components, fuseOptions)
+      fuseComponentsCaches[jsonFileURL] = new Fuse(components, fuseOptions)
 
       // Create a new instance of Fuse for instances search
-      fuseInstancesCache = new Fuse(components, fuseInstancesOptions)
+      fuseInstancesCaches[jsonFileURL] = new Fuse(components, fuseInstancesOptions)
     }
 
-    return type === "instances" ? fuseInstancesCache : fuseComponentsCache;
+    return type === "instances" ? fuseInstancesCaches[jsonFileURL] : fuseComponentsCaches[jsonFileURL];
   }
 
   function doSearch(fuse, query) {
@@ -147,7 +147,7 @@ var adp = adp || {};
       const jsonFileURL = e.data.jsonFileURL;
       const query = e.data.q;
       const type = e.data.type;
-      console.log(query, type);
+      console.log(query, type, jsonFileURL);
 
       prepareSearch(jsonFileURL, type)
         .then(fuse => doSearch(fuse, query))

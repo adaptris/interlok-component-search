@@ -3,7 +3,7 @@ Vue.prototype.adp = adp;
 
 const searchWorker = new Worker("./js/json-search-worker.js");
 
-const versions = ["4.0.0-RELEASE"];
+const versions = ["4.0.0-RELEASE", "4.1.0-RELEASE"];
 var app = new Vue({
   el: "#app",
   data: function () {
@@ -13,6 +13,7 @@ var app = new Vue({
       searchMessage: null,
       loading: false,
       query: null,
+      versions: versions,
       version: versions[0],
       searchInstances: false,
       originalSelected: 0,
