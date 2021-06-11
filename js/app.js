@@ -3,7 +3,7 @@ Vue.prototype.adp = adp;
 
 const searchWorker = new Worker("./js/json-search-worker.js");
 
-const versions = ["4.0.0-RELEASE", "4.1.0-RELEASE"];
+const versions = ["4.1.0-RELEASE", "4.0.0-RELEASE"];
 var app = new Vue({
   el: "#app",
   data: function () {
