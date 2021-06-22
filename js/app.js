@@ -335,7 +335,7 @@ Vue.component("search-results-result", {
             <small class="text-info">{{ result.item.projectInfo["Implementation-Title"] + ' ' + result.item.projectInfo["Implementation-Version"] }}</small>
           </p>
           <p class="card-text" v-if="tags && tags.length > 0">
-            <span v-for="tag in tags"><span class="badge badge-info" v-bind:class="['badge-' + tag]">{{ tag }}</span>&nbsp;</span>
+            <span v-for="tag in tags"><span class="badge bg-info" v-bind:class="['badge-' + tag]">{{ tag }}</span>&nbsp;</span>
           </p>
         </div>
       </div>
