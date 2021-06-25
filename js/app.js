@@ -1,6 +1,6 @@
 import adpGlobal from "./global.js"
 import adpUtils from "./utils-module.js"
-import SearchResults from "./SearchResults.js"
+import SearchResults from "./components/SearchResults.js"
 
 const searchWorker = new Worker("./js/json-search-worker.js");
 
