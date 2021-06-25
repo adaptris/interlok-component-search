@@ -30,7 +30,7 @@
         <div class="container-fluid">
           <a class="navbar-brand" href="#">
             <img src="./img/logo.png" width="30" height="30" class="d-inline-block align-text-top" alt="Interlok Logo">
-            <span>Interlok Component Search</span>
+            <span> Interlok Component Search</span>
           </a>
         </div>
       </nav>
@@ -69,7 +69,7 @@
                     <div class="invalid-feedback" v-if="hasError('version')" v-text="getError('version')"></div>
                   </div>
                   <div class="col-sm-3">
-                    <div class="form-check-inline form-switch">
+                    <div class="form-check-inline form-check form-switch">
                       <input class="form-check-input" type="checkbox" id="searchInstances" v-model="searchInstances">
                       <label class="form-check-label" for="searchInstances">Instances</label>
                     </div>
@@ -118,9 +118,10 @@
     crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/dompurify@2.2.7" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/vue@3.1.2/dist/vue.global.js" crossorigin="anonymous"></script>
-  <script src="./js/global.js"></script>
+  <script src="./js/global.js" type="module"></script>
   <script src="./js/utils.js"></script>
-  <script src="./js/app.js"></script>
+  <script src="./js/utils-module.js" type="module"></script>
+  <script src="./js/app.js" type="module"></script>
 </body>
 
 </html>

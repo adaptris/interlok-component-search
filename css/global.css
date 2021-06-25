@@ -84,7 +84,7 @@
 	background-color: var(--consumer-color)!important;
 }
 .badge-producer {
-	background-color: var(--consumer-color)!important;
+	background-color: var(--producer-color)!important;
 }
 .badge-service {
 	background-color: var(--service-color)!important;
@@ -100,4 +100,10 @@
 }
 .badge-extension {
 	background-color: var(--advanced-color)!important;
+}
+
+
+.card:hover{
+	transform: scale(1.005);
+	box-shadow: 0 .125rem .25rem rgba(0,0,0,.075)!important;
 }

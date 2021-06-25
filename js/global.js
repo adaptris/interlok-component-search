@@ -29,3 +29,5 @@ var adp = adp || {};
   adp.link.contactUs = adp.link.adpBase + "pages/contact-adaptris";
 
 })(adp);
+
+export default adp;
