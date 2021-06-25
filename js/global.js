@@ -1,6 +1,6 @@
 var adp = adp || {};
 
-(function(adp) {
+(function (adp) {
   adp.url = adp.url || {};
 
   function getContextPath() {
@@ -17,7 +17,7 @@ var adp = adp || {};
 
 })(adp);
 
-(function(adp) {
+(function (adp) {
   adp.link = adp.link || {};
 
   adp.link.devBase = "https://development.adaptris.net/";

@@ -1,11 +1,8 @@
-// Register adp to vue
-Vue.prototype.adp = adp;
-
 const searchWorker = new Worker("./js/json-search-worker.js");
 
 const versions = ["4.1.0-RELEASE", "4.0.0-RELEASE"];
-var app = new Vue({
-  el: "#app",
+const app = Vue.createApp({
+  inject: ["adp", "adpUtils"],
   data: function () {
     return {
       searchWorker: null,
@@ -75,12 +72,12 @@ var app = new Vue({
 
       const searchWorker = self.getOrInitWorker();
 
-      const queryParts = adp.utils.trimToEmpty(self.query).split(":");
+      const queryParts = this.adpUtils.trimToEmpty(self.query).split(":");
       const subQuery = queryParts.length > 1 ? queryParts[1] : "";
 
       const query = {
         $and: [
-          { parents: adp.utils.addPrefix(queryParts[0], "=") }
+          { parents: this.adpUtils.addPrefix(queryParts[0], "=") }
         ]
       }
 
@@ -142,7 +139,11 @@ var app = new Vue({
   }
 });
 
-Vue.component("search-results", {
+// Register adp to the vue app
+app.provide("adp", adp);
+app.provide("adpUtils", adp.utils);
+
+app.component("search-results", {
   props: {
     total: Number,
     results: Array,
@@ -176,7 +177,7 @@ Vue.component("search-results", {
   `
 });
 
-Vue.component("search-results-pagination", {
+app.component("search-results-pagination", {
   props: {
     total: Number,
     size: Number,
@@ -267,7 +268,8 @@ Vue.component("search-results-pagination", {
   `
 });
 
-Vue.component("search-results-result", {
+app.component("search-results-result", {
+  inject: ["adpUtils"],
   props: {
     result: Object
   },
@@ -287,7 +289,7 @@ Vue.component("search-results-result", {
       return "border-" + this.componentTypeClass;
     },
     title: function () {
-      return adp.utils.humanyze(this.result.item.alias || this.result.item.className);
+      return this.adpUtils.humanyze(this.result.item.alias || this.result.item.className);
     },
     summary: function () {
       return this.result.item.profile && this.result.item.profile.summary ? this.result.item.profile.summary : this.description.substring(0, Math.min(this.description.length, 50));
@@ -330,7 +332,7 @@ Vue.component("search-results-result", {
             <span class="text-muted" v-text="summary"></span>
             <a href="#" v-on:click.prevent="toggleFullDesc" v-text="showFullDesc ? 'Less...' : 'More...'"></a>
           </p>
-          <p class="card-text mb-2" v-show="showFullDesc" v-html="adp.utils.purify(result.item.descriptionHtml) || 'No description'"></p>
+          <p class="card-text mb-2" v-show="showFullDesc" v-html="adpUtils.purify(result.item.descriptionHtml) || 'No description'"></p>
           <p class="card-text mb-2" v-if="result.item.projectInfo">
             <small class="text-info">{{ result.item.projectInfo["Implementation-Title"] + ' ' + result.item.projectInfo["Implementation-Version"] }}</small>
           </p>
@@ -342,3 +344,5 @@ Vue.component("search-results-result", {
     </li>
   `
 });
+
+app.mount('#app');
