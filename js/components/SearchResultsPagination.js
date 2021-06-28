@@ -65,7 +65,7 @@ export default {
             this.paginate();
         }
     },
-    template: `
+    template: /*html*/ `
       <nav aria-label="...">
         <ul class="pagination">
           <li class="page-item" v-bind:class="[firstPageSelected ? 'disabled' : '']">

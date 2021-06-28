@@ -1,56 +1,56 @@
 export default {
-    inject: ["adpUtils"],
-    props: {
-        result: Object
+  inject: ["adpUtils"],
+  props: {
+    result: Object
+  },
+  data: function () {
+    return {
+      fullClassName: this.result.item.fullClassName,
+      showFullDesc: false
+    }
+  },
+  beforeUpdate: function () {
+    // Not the same result
+    if (this.fullClassName != this.result.item.fullClassName) {
+      this.showFullDesc = false;
+    }
+    this.fullClassName = this.result.item.fullClassName;
+  },
+  computed: {
+    componentTypeClass: function () {
+      return this.result.item.componentType == "object" ? "extension" : this.result.item.componentType;
     },
-    data: function () {
-        return {
-            fullClassName: this.result.item.fullClassName,
-            showFullDesc: false
-        }
+    iconClass: function () {
+      return "fa-" + this.componentTypeClass;
     },
-    beforeUpdate: function () {
-        // Not the same result
-        if (this.fullClassName != this.result.item.fullClassName) {
-            this.showFullDesc = false;
-        }
-        this.fullClassName = this.result.item.fullClassName;
+    borderClass: function () {
+      return "border-" + this.componentTypeClass;
     },
-    computed: {
-        componentTypeClass: function () {
-            return this.result.item.componentType == "object" ? "extension" : this.result.item.componentType;
-        },
-        iconClass: function () {
-            return "fa-" + this.componentTypeClass;
-        },
-        borderClass: function () {
-            return "border-" + this.componentTypeClass;
-        },
-        title: function () {
-            return this.adpUtils.humanyze(this.result.item.alias || this.result.item.className);
-        },
-        summary: function () {
-            return this.result.item.profile && this.result.item.profile.summary ? this.result.item.profile.summary : this.description.substring(0, Math.min(this.description.length, 50));
-        },
-        description: function () {
-            return this.result.item.description || "";
-        },
-        author: function () {
-            return this.result.item.profile && this.result.item.profile.author ? this.result.item.profile.author : "";
-        },
-        since: function () {
-            return this.result.item.profile && this.result.item.profile.since ? this.result.item.profile.since : "";
-        },
-        tags: function () {
-            return this.result.item.profile && this.result.item.profile.tag ? this.result.item.profile.tag.split(",") : [];
-        }
+    title: function () {
+      return this.adpUtils.humanyze(this.result.item.alias || this.result.item.className);
     },
-    methods: {
-        toggleFullDesc: function () {
-            this.showFullDesc = !this.showFullDesc;
-        }
+    summary: function () {
+      return this.result.item.profile && this.result.item.profile.summary ? this.result.item.profile.summary : this.description.substring(0, Math.min(this.description.length, 50));
     },
-    template: `
+    description: function () {
+      return this.result.item.description || "";
+    },
+    author: function () {
+      return this.result.item.profile && this.result.item.profile.author ? this.result.item.profile.author : "";
+    },
+    since: function () {
+      return this.result.item.profile && this.result.item.profile.since ? this.result.item.profile.since : "";
+    },
+    tags: function () {
+      return this.result.item.profile && this.result.item.profile.tag ? this.result.item.profile.tag.split(",") : [];
+    }
+  },
+  methods: {
+    toggleFullDesc: function () {
+      this.showFullDesc = !this.showFullDesc;
+    }
+  },
+  template: /*html*/ `
       <li class="mb-2">
         <div class="card" v-bind:class="[borderClass]">
           <div class="card-body">

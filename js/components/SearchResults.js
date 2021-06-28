@@ -26,7 +26,7 @@ export default {
             this.$emit('paginate', { selected: msg.selected, from: msg.from, size: msg.size });
         }
     },
-    template: `
+    template: /*html*/ `
       <div>
         <div class=" mb-2 text-muted" v-show="hasResult">
           <span v-text="total"></span> Results
