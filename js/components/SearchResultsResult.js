@@ -1,5 +1,6 @@
+import adpUtils from "../utils-module.js"
+
 export default {
-  inject: ["adpUtils"],
   props: {
     result: Object
   },
@@ -27,13 +28,16 @@ export default {
       return "border-" + this.componentTypeClass;
     },
     title: function () {
-      return this.adpUtils.humanyze(this.result.item.alias || this.result.item.className);
+      return adpUtils.humanyze(this.result.item.alias || this.result.item.className);
     },
     summary: function () {
       return this.result.item.profile && this.result.item.profile.summary ? this.result.item.profile.summary : this.description.substring(0, Math.min(this.description.length, 50));
     },
     description: function () {
       return this.result.item.description || "";
+    },
+    fullDescription: function () {
+      return adpUtils.purify(this.result.item.descriptionHtml) || "No description";
     },
     author: function () {
       return this.result.item.profile && this.result.item.profile.author ? this.result.item.profile.author : "";
@@ -70,7 +74,7 @@ export default {
               <span class="text-muted" v-text="summary"></span>&nbsp;
               <a href="#" v-on:click.prevent="toggleFullDesc" v-text="showFullDesc ? 'Less...' : 'More...'"></a>
             </p>
-            <p class="card-text mb-2" v-show="showFullDesc" v-html="adpUtils.purify(result.item.descriptionHtml) || 'No description'"></p>
+            <p class="card-text mb-2" v-show="showFullDesc" v-html="fullDescription"></p>
             <p class="card-text mb-2" v-if="result.item.projectInfo">
               <small class="text-info">{{ result.item.projectInfo["Implementation-Title"] + ' ' + result.item.projectInfo["Implementation-Version"] }}</small>
             </p>
