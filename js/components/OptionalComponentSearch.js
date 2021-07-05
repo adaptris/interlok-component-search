@@ -23,6 +23,12 @@ export default {
             results: []
         };
     },
+    created: function () {
+        window.addEventListener("scroll", this.handleScroll);
+    },
+    destroyed: function () {
+        window.removeEventListener("scroll", this.handleScroll);
+    },
     computed: {
         hasResult: function () {
             return this.results && this.results.length > 0;
@@ -37,6 +43,16 @@ export default {
         }
     },
     methods: {
+        handleScroll(event) {
+            const navbarContainer = document.getElementById("navbar-container");
+            if (document.body.scrollTop > 90 || document.documentElement.scrollTop > 90) {
+                navbarContainer.classList.add("sticky-top");
+                navbarContainer.classList.remove("container");
+            } else {
+                navbarContainer.classList.add("container");
+                navbarContainer.classList.remove("sticky-top");
+            }
+        },
         emitHasResult: function (hasResult) {
             this.$emit("has-result", hasResult);
         },
@@ -118,8 +134,8 @@ export default {
                 </div>
             </div>
             </div>
-            <div class="container">
-                <nav class="navbar navbar-expand-lg navbar-light bg-light rounded mb-4 sticky-top" style="top: 57px;">
+            <div class="container mb-4" id="navbar-container">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light rounded">
                     <div class="container">
                         <div class="col align-self-center">
                             <form v-on:submit="search" method="post">
@@ -150,6 +166,8 @@ export default {
                         </div>
                     </div>
                 </nav>
+            </div>
+            <div class="container">
                 <div class="row justify-content-md-center mb-4">
                     <div class="col align-self-center">
                         <div style="position: relative; min-height: 50px">
