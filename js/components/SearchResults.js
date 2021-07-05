@@ -33,6 +33,9 @@ export default {
         </div>
         <ul class="list-unstyled">
          <search-results-result v-for="result in results" v-bind:result="result" v-bind:key="result.fullClassName"></search-results-result>
+         <li v-if="!hasResult" class="mb-2">
+            There is no results maching your query
+         </li>
         </ul>
         <search-results-pagination v-show="hasResult" v-bind:total="total" v-bind:original-selected="originalSelected" v-bind:size="size" v-on:paginate="paginate"></search-results-pagination>
       </div>

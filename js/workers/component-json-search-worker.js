@@ -1,5 +1,5 @@
 importScripts("https://cdn.jsdelivr.net/npm/fuse.js@6.4.6");
-importScripts("./utils.js");
+importScripts("../utils.js");
 
 var adp = adp || {};
 

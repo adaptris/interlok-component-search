@@ -69,20 +69,20 @@ export default {
       <nav aria-label="...">
         <ul class="pagination">
           <li class="page-item" v-bind:class="[firstPageSelected ? 'disabled' : '']">
-            <a class="page-link" href="#" v-on:click="firstPage" v-on:keyup.enter="firstPage" v-bind:tabindex="firstPageSelected ? -1 : 0">First</a>
+            <button class="page-link" v-on:click="firstPage" v-on:keyup.enter="firstPage" v-bind:tabindex="firstPageSelected ? -1 : 0">First</button>
           </li>
           <li class="page-item" v-bind:class="[firstPageSelected ? 'disabled' : '']">
-            <a class="page-link" href="#" v-on:click="previous">Previous</a>
+            <button class="page-link" v-on:click="previous">Previous</button>
           </li>
           <li class="page-item" v-bind:class="{'active': page.selected}" v-for="page in pages" v-bind:result="page">
-            <a class="page-link" href="#" v-on:click="setPage(page)">{{ page.content }}</a>
+            <button class="page-link" v-on:click="setPage(page)">{{ page.content }}</button>
             <span class="sr-only" v-if="page.selected">(current)</span>
           </li>
           <li class="page-item" v-bind:class="[lastPageSelected ? 'disabled' : '']">
-            <a class="page-link" href="#" v-on:click="next">Next</a>
+            <button class="page-link" v-on:click="next">Next</button>
           </li>
           <li class="page-item" v-bind:class="[lastPageSelected ? 'disabled' : '']">
-            <a class="page-link" href="#" v-on:click="lastPage" v-on:keyup.enter="lastPage" v-bind:tabindex="lastPageSelected ? -1 : 0">Last</a>
+            <button class="page-link" v-on:click="lastPage" v-on:keyup.enter="lastPage" v-bind:tabindex="lastPageSelected ? -1 : 0">Last</button>
           </li>
         </ul>
       </nav>

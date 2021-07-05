@@ -103,7 +103,13 @@
 }
 
 
-.card:hover{
+.card:hover {
 	transform: scale(1.005);
 	box-shadow: 0 .125rem .25rem rgba(0,0,0,.075)!important;
+}
+
+.card-optional-component .card-img-top {
+    width: 25%;
+    padding-top: 1rem;
+    padding-left: 1rem;
 }

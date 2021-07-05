@@ -1,14 +1,15 @@
 import adpUtils from "../utils-module.js"
-import SearchResults from './SearchResults.js';
+import OptionalComponentList from './OptionalComponentList.js';
 
-const searchWorker = new Worker("./js/workers/component-json-search-worker.js");
+const searchWorker = new Worker("./js/workers/optional-component-json-search-worker.js");
 
 export default {
     components: {
-        "search-results": SearchResults
+        "optional-component-list": OptionalComponentList
     },
     props: {
-        versions: Array
+        versions: Array,
+        logoLocationUrl: String
     },
     data: function () {
         return {
@@ -18,10 +19,6 @@ export default {
             loading: false,
             query: null,
             version: this.versions[0],
-            searchInstances: false,
-            originalSelected: 0,
-            from: 0,
-            size: 10,
             total: 0,
             results: []
         };
@@ -30,11 +27,8 @@ export default {
         hasResult: function () {
             return this.results && this.results.length > 0;
         },
-        paginatedResults: function () {
-            return this.results ? this.results.slice(this.from, this.from + this.size) : [];
-        },
         placeholder: function () {
-            return this.searchInstances ? "ClassName:Query" : "Query";
+            return "Query";
         }
     },
     watch: {
@@ -53,7 +47,7 @@ export default {
                     const resultsJson = e.data ? e.data.results : {};
                     console.log("Message received from worker");
                     self.total = resultsJson.totalCount;
-                    self.results = resultsJson.components;
+                    self.results = resultsJson.optionalComponents;
                     self.loading = false;
                 }
 
@@ -70,75 +64,33 @@ export default {
             }
             return self.searchWorker;
         },
-        doSearchComponents: function () {
+        doSearchOptionalComponents: function () {
             var self = this;
             self.loading = true;
             self.searchMessage = "Searching components...";
 
             const searchWorker = self.getOrInitWorker();
 
-            searchWorker.postMessage({ q: self.query, v: self.version, type: "components", jsonFileURL: `../../data/interlok-component-${self.version.toLowerCase()}.json` });
-        },
-        doSearchInstances: function () {
-            var self = this;
-            self.loading = true;
-            self.searchMessage = "Searching components...";
-
-            const searchWorker = self.getOrInitWorker();
-
-            const queryParts = adpUtils.trimToEmpty(self.query).split(":");
-            const subQuery = queryParts.length > 1 ? queryParts[1] : "";
-
-            const query = {
-                $and: [
-                    { parents: adpUtils.addPrefix(queryParts[0], "=") }
-                ]
-            }
-
-            if (subQuery !== "") {
-                query.$and[1] = {
-                    $or: [
-                        { fullClassName: subQuery },
-                        { className: subQuery },
-                        { packageName: subQuery },
-                        { alias: subQuery },
-                        { componentType: subQuery },
-                        { $path: "profile.tag", $val: subQuery }
-                    ]
-                }
-            }
-
-            searchWorker.postMessage({ q: query, v: self.version, type: "instances", jsonFileURL: `../../data/interlok-component-${self.version.toLowerCase()}.json` });
+            searchWorker.postMessage({ q: self.query, v: self.version, jsonFileURL: `../../data/interlok-optional-component-${self.version.toLowerCase()}.json` });
         },
         search: function (event) {
             event.preventDefault();
-            this.originalSelected = 0;
-            this.from = 0;
             if (this.validate(event)) {
                 this.doSearch();
             }
         },
         doSearch: function () {
-            if (this.searchInstances) {
-                this.doSearchInstances();
-            } else {
-                this.doSearchComponents();
-            }
-        },
-        searchPaginate: function (msg) {
-            this.originalSelected = msg.selected;
-            this.from = msg.from;
-            this.size = msg.size;
+            this.doSearchOptionalComponents();
         },
         validate: function (event) {
             this.searchMessage = null;
             this.errors = {};
-            if (this.query && this.version) {
+            if (/*this.query &&*/ this.version) {
                 return true;
             }
-            if (!this.query) {
+            /*if (!this.query) {
                 this.errors["query"] = "Query required.";
-            }
+            }*/
             if (!this.version) {
                 this.errors["version"] = "Version required.";
             }
@@ -150,8 +102,11 @@ export default {
             return this.getError(property) != null;
         }
     },
+    mounted: function () {
+        this.doSearch();
+    },
     template: /*html*/ `
-        <div class="component-search">
+        <div class="optional-component-search">
             <div class="toast-container position-absolute p-3 top-0 end-0" id="toastPlacement" style="z-index: 9999">
             <div class="toast align-items-center text-white bg-error border-0" v-bind:class="{'show': hasError('global')}"
                 role="alert" aria-live="assertive" aria-atomic="true">
@@ -184,10 +139,6 @@ export default {
                                         <div class="invalid-feedback" v-if="hasError('version')" v-text="getError('version')"></div>
                                     </div>
                                     <div class="col-sm-3">
-                                        <div class="form-check-inline form-check form-switch">
-                                            <input class="form-check-input" type="checkbox" id="searchInstances" v-model="searchInstances">
-                                            <label class="form-check-label" for="searchInstances">Instances</label>
-                                        </div>
                                         <button type="submit" class="btn btn-primary btn-block" v-bind:disabled="loading">
                                             <i v-show="!loading" class="fa fa-search"></i>
                                             <i v-show="loading" class="fa fa-spinner fa-spin"></i>
@@ -208,9 +159,8 @@ export default {
                                     <i class="fa fa-spinner fa-spin"></i>
                                 </div>
                             </div>
-                            <search-results v-bind:results="paginatedResults" v-bind:total="total"
-                                v-bind:original-selected="originalSelected" v-on:paginate="searchPaginate">
-                            </search-results>
+                            <optional-component-list v-bind:logo-location-url="logoLocationUrl" v-bind:results="results" v-bind:total="total">
+                            </optional-component-list>
                         </div>
                     </div>
                 </div>

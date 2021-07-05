@@ -32,13 +32,30 @@
             <img src="./img/logo.png" width="30" height="30" class="d-inline-block align-text-top" alt="Interlok Logo">
             <span> Interlok Component Search</span>
           </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <router-link class="nav-link" to="/component-search" active-class="active" exact-path>
+                  Component Search
+                </router-link>
+              </li>
+              <li class="nav-item">
+                <router-link class="nav-link" to="/optional-component-search" active-class="active" exact-path>
+                  Optional Component
+                </router-link>
+              </li>
+          </div>
         </div>
       </nav>
     </header>
 
     <section id="main" class="mb-4">
-      <component-search id="component-search" v-bind:versions="versions" v-on:has-result="hasResultReceived">
-      </component-search>
+      <router-view v-on:has-result-received="hasResultReceived"></router-view>
     </section>
 
     <footer class="" v-bind:class="{'fixed-bottom': !hasResult}">
@@ -57,6 +74,8 @@
     crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/dompurify@2.2.7" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/vue@3.1.2/dist/vue.global.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue-router@4.0.1/dist/vue-router.global.js"
+    crossorigin="anonymous"></script>
   <script src="./js/global.js" type="module"></script>
   <script src="./js/utils.js"></script>
   <script src="./js/utils-module.js" type="module"></script>
