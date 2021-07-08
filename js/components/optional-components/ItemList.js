@@ -1,5 +1,5 @@
-import OptionalComponentItem from './OptionalComponentItem.js';
-import ItemDetails from './optional-components/ItemDetails.js';
+import OptionalComponentItem from './Item.js';
+import ItemDetails from './ItemDetails.js';
 
 export default {
   components: {

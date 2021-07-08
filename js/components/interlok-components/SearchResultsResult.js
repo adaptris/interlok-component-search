@@ -1,4 +1,4 @@
-import adpUtils from "../utils-module.js"
+import adpUtils from "../../utils-module.js"
 
 export default {
   props: {

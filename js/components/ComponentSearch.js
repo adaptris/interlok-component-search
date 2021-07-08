@@ -1,11 +1,11 @@
 import adpUtils from "../utils-module.js"
-import SearchResults from './SearchResults.js';
+import ComponentSearchResults from './interlok-components/SearchResults.js';
 
 const searchWorker = new Worker("./js/workers/component-json-search-worker.js");
 
 export default {
     components: {
-        "search-results": SearchResults
+        "component-search-results": ComponentSearchResults
     },
     props: {
         versions: Array
@@ -226,9 +226,9 @@ export default {
                                     <i class="fa fa-spinner fa-spin"></i>
                                 </div>
                             </div>
-                            <search-results v-bind:results="paginatedResults" v-bind:total="total"
+                            <component-search-results v-bind:results="paginatedResults" v-bind:total="total"
                                 v-bind:original-selected="originalSelected" v-on:paginate="searchPaginate">
-                            </search-results>
+                            </component-search-results>
                         </div>
                     </div>
                 </div>

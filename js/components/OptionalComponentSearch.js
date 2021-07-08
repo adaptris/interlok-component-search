@@ -1,5 +1,4 @@
-import adpUtils from "../utils-module.js"
-import OptionalComponentList from './OptionalComponentList.js';
+import OptionalComponentList from './optional-components/ItemList.js';
 
 const searchWorker = new Worker("./js/workers/optional-component-json-search-worker.js");
 
