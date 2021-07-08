@@ -16,12 +16,12 @@ const ComponentSearchPage = {
       hasResult: false
     };
   },
-  template: `<component-search id="component-search" v-bind:versions="versions" v-on:has-result="hasResultReceived"></component-search>`,
   methods: {
     hasResultReceived(hasResult) {
       this.$emit("hasResultReceived", hasResult);
     }
-  }
+  },
+  template: `<component-search id="component-search" v-bind:versions="versions" v-on:has-result="hasResultReceived"></component-search>`
 };
 const OptionalComponentSearchPage = {
   components: {
@@ -34,12 +34,12 @@ const OptionalComponentSearchPage = {
       hasResult: false
     };
   },
-  template: `<optional-component-search id="component-search" v-bind:versions="versions" v-bind:logo-location-url="logoLocationUrl" v-on:has-result="hasResultReceived"></optional-component-search>`,
   methods: {
     hasResultReceived(hasResult) {
       this.$emit("hasResultReceived", hasResult);
     }
-  }
+  },
+  template: `<optional-component-search id="component-search" v-bind:versions="versions" v-bind:logo-location-url="logoLocationUrl" v-on:has-result="hasResultReceived"></optional-component-search>`
 };
 const NotFound = {
   template: `<h2>Oops, it looks like the page you're looking for doesn't exist.</h2>`

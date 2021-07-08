@@ -117,3 +117,9 @@
     padding-top: 1rem;
     padding-left: 1rem;
 }
+
+.modal-content-optional-component .modal-header img {
+    width: 12%;
+    padding-top: 0;
+    padding-left: 0;
+}
