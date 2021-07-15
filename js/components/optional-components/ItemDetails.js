@@ -1,12 +1,14 @@
 import ItemDetailsGeneral from './ItemDetailsGeneral.js';
 import ItemDetailsLinks from './ItemDetailsLinks.js';
 import ItemDetailsBuild from './ItemDetailsBuild.js';
+import ItemDetailsReadme from './ItemDetailsReadme.js';
 
 export default {
   components: {
     "item-details-general": ItemDetailsGeneral,
     "item-details-links": ItemDetailsLinks,
-    "item-details-build": ItemDetailsBuild
+    "item-details-build": ItemDetailsBuild,
+    "item-details-readme": ItemDetailsReadme
   },
   props: {
     item: Object,
@@ -36,6 +38,9 @@ export default {
     },
     isBuild: function () {
       return this.selectedTab === "build";
+    },
+    isReadme: function () {
+      return this.selectedTab === "readme";
     }
   },
   methods: {
@@ -58,14 +63,14 @@ export default {
   template: /*html*/ `
       <div class="modal-content modal-content-optional-component">
         <div class="modal-header">
-          <img v-bind:src="logo" v-on:error="setDefaultLogo" class="" v-bind:alt="artifactId">&nbsp;&nbsp;
+          <img v-bind:src="logo" v-on:error="setDefaultLogo" class="" v-bind:alt="artifactId" width="70" height="70">&nbsp;&nbsp;
           <h5 class="modal-title">
             {{ name }}
           </h5>
           <button type="button" class="btn-close" aria-label="Close" v-on:click="close"></button>
         </div>
-        <div class="modal-body">
-          <ul class="nav nav-tabs mb-4">
+        <div class="modal-tabs">
+          <ul class="nav nav-tabs nav-fill w-100">
             <li class="nav-item">
               <button class="nav-link" v-bind:class="{active: isGeneral}" data-tab="general" v-on:click="selectTab">General</button>
             </li>
@@ -75,7 +80,12 @@ export default {
             <li class="nav-item">
               <button class="nav-link" v-bind:class="{active: isBuild}" data-tab="build" v-on:click="selectTab">Build</button>
             </li>
+            <li class="nav-item">
+              <button class="nav-link" v-bind:class="{active: isReadme}" data-tab="readme" v-on:click="selectTab">ReadMe</button>
+            </li>
           </ul>
+        </div>
+        <div class="modal-body">
           <div class="tab-content">
             <div class="tab-pane fade" v-bind:class="{active: isGeneral, show: isGeneral}" role="tabpanel" aria-labelledby="general-tab">
               <item-details-general v-bind:item="item" v-bind:logo-location-url="logoLocationUrl"></item-details-general>
@@ -85,6 +95,9 @@ export default {
             </div>
             <div class="tab-pane fade" v-bind:class="{active: isBuild, show: isBuild}" role="tabpanel" aria-labelledby="build-tab">
               <item-details-build v-bind:item="item"></item-details-build>
+            </div>
+            <div class="tab-pane fade" v-bind:class="{active: isReadme, show: isReadme}" role="tabpanel" aria-labelledby="readme-tab">
+              <item-details-readme v-bind:item="item"></item-details-readme>
             </div>
           </div>
         </div>

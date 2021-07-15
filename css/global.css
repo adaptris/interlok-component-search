@@ -113,13 +113,21 @@
 }
 
 .card-optional-component .card-img-top {
-    width: 25%;
+	width: 80px;
+    height: 80px;
     padding-top: 1rem;
     padding-left: 1rem;
 }
 
+.modal-tabs {
+	display: flex;
+	flex-shrink: 0;
+	align-items: center;
+	justify-content: space-between;
+	padding: 1rem 1rem;
+}
+
 .modal-content-optional-component .modal-header img {
-    width: 12%;
     padding-top: 0;
     padding-left: 0;
 }

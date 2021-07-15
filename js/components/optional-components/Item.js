@@ -60,7 +60,7 @@ export default {
   template: /*html*/ `
       <div class="col">
         <div class="card h-100 card-optional-component">
-        <img v-bind:src="logo" v-on:error="setDefaultLogo" class="card-img-top" v-bind:alt="artifactId">
+          <img v-bind:src="logo" v-on:error="setDefaultLogo" class="card-img-top" v-bind:alt="artifactId" width="80" height="80">
           <div class="card-body">
             <h5 class="card-title">
               {{ name }}
