@@ -9,10 +9,16 @@
   --connection-color: #FFDB6C;
   --interceptor-color: #DFB0F9;
   --advanced-color: #98E4BC;
+
+  --header-height: 57px;
 }
 
 #navbar-container.has-header.sticky-top {
-	top: 57px;
+	top: var(--header-height);
+}
+
+#toastPlacement.no-header {
+	top: var(--header-height);
 }
 
 .search-bar {

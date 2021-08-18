@@ -124,7 +124,7 @@ export default {
     },
     template: /*html*/ `
         <div class="optional-component-search">
-            <div class="toast-container position-absolute p-3 top-0 end-0" id="toastPlacement" style="z-index: 9999">
+            <div class="toast-container position-absolute p-3 top-0 end-0" id="toastPlacement" v-bind:class="{'top-0': hasHeader, 'no-header': !hasHeader}" style="z-index: 9999">
             <div class="toast align-items-center text-white bg-error border-0" v-bind:class="{'show': hasError('global')}"
                 role="alert" aria-live="assertive" aria-atomic="true">
                 <div class="d-flex" v-show="hasError('global')">
