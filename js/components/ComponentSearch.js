@@ -53,11 +53,12 @@ export default {
     methods: {
         handleScroll(event) {
             const navbarContainer = document.getElementById("navbar-container");
+            const containerClass = this.hasHeader ? "container" : "container-fluid";
             if (document.body.scrollTop > 90 || document.documentElement.scrollTop > 90) {
                 navbarContainer.classList.add("sticky-top");
-                navbarContainer.classList.remove("container");
+                navbarContainer.classList.remove(containerClass);
             } else {
-                navbarContainer.classList.add("container");
+                navbarContainer.classList.add(containerClass);
                 navbarContainer.classList.remove("sticky-top");
             }
         },
@@ -181,7 +182,7 @@ export default {
                     </div>
                 </div>
             </div>
-            <div class="container mb-4" v-bind:class="{'has-header': hasHeader}" id="navbar-container">
+            <div class="mb-4" v-bind:class="{'container': hasHeader, 'has-header': hasHeader, 'container-fluid': !hasHeader}" id="navbar-container">
                 <nav class="navbar navbar-expand-lg navbar-light bg-light rounded">
                     <div class="container">
                         <div class="col align-self-center">
@@ -218,7 +219,7 @@ export default {
                     </div>
                 </nav>
             </div>
-            <div class="container">
+            <div class="" v-bind:class="{'container': hasHeader, 'container-fluid': !hasHeader}">
                 <div class="row justify-content-md-center mb-4">
                     <div class="col align-self-center">
                         <div style="position: relative; min-height: 50px">
