@@ -8,6 +8,7 @@ export default {
     },
     props: {
         versions: Array,
+        dataLocation: String,
         logoLocationUrl: String,
         hasHeader: Boolean
     },
@@ -87,7 +88,7 @@ export default {
 
             const searchWorker = self.getOrInitWorker();
 
-            searchWorker.postMessage({ q: self.query, v: self.version, jsonFileURL: `../../data/interlok-optional-component-${self.version.toLowerCase()}.json` });
+            searchWorker.postMessage({ q: self.query, v: self.version, jsonFileURL: `${self.dataLocation}/interlok-optional-component-${self.version.toLowerCase()}.json` });
         },
         search: function (event) {
             event.preventDefault();

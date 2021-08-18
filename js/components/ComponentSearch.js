@@ -9,6 +9,7 @@ export default {
     },
     props: {
         versions: Array,
+        dataLocation: String,
         hasHeader: Boolean
     },
     data: function () {
@@ -94,7 +95,7 @@ export default {
 
             const searchWorker = self.getOrInitWorker();
 
-            searchWorker.postMessage({ q: self.query, v: self.version, type: "components", jsonFileURL: `../../data/interlok-component-${self.version.toLowerCase()}.json` });
+            searchWorker.postMessage({ q: self.query, v: self.version, type: "components", jsonFileURL: `${self.dataLocation}/interlok-component-${self.version.toLowerCase()}.json` });
         },
         doSearchInstances: function () {
             var self = this;

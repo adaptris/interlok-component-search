@@ -3,6 +3,7 @@ import adpLink from "../link-module.js"
 export default {
     props: {
         versions: Array,
+        dataLocation: String,
         hideHeaderFooter: Boolean,
         hideOcs: Boolean
     },
@@ -50,7 +51,7 @@ export default {
             </header>
 
             <section id="main" class="mb-4">
-                <router-view v-on:has-result-received="hasResultReceived" v-bind:versions="versions" v-bind:has-header="!hideHeaderFooter"></router-view>
+                <router-view v-on:has-result-received="hasResultReceived" v-bind:versions="versions" v-bind:data-location="dataLocation" v-bind:has-header="!hideHeaderFooter"></router-view>
             </section>
         
             <footer class="" v-bind:class="{'fixed-bottom': !hasResult}" v-if="!hideHeaderFooter">
