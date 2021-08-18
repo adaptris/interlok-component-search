@@ -8,7 +8,8 @@ export default {
     },
     props: {
         versions: Array,
-        logoLocationUrl: String
+        logoLocationUrl: String,
+        hasHeader: Boolean
     },
     data: function () {
         return {
@@ -133,7 +134,7 @@ export default {
                 </div>
             </div>
             </div>
-            <div class="container mb-4" id="navbar-container">
+            <div class="container mb-4" v-bind:class="{'has-header': hasHeader}" id="navbar-container">
                 <nav class="navbar navbar-expand-lg navbar-light bg-light rounded">
                     <div class="container">
                         <div class="col align-self-center">

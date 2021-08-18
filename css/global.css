@@ -11,7 +11,7 @@
   --advanced-color: #98E4BC;
 }
 
-#navbar-container.sticky-top {
+#navbar-container.has-header.sticky-top {
 	top: 57px;
 }
 

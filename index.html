@@ -25,48 +25,8 @@
 
 <body>
   <div id="app">
-    <header class="mb-4 sticky-top">
-      <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top search-bar">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">
-            <img src="./img/logo.png" width="30" height="30" class="d-inline-block align-text-top" alt="Interlok Logo">
-            <span> Interlok Component Search</span>
-          </a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-            aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <router-link class="nav-link" to="/component-search" active-class="active" exact-path>
-                  Component Search
-                </router-link>
-              </li>
-              <li class="nav-item">
-                <router-link class="nav-link" to="/optional-component-search" active-class="active" exact-path>
-                  Optional Component
-                </router-link>
-              </li>
-          </div>
-        </div>
-      </nav>
-    </header>
-
-    <section id="main" class="mb-4">
-      <router-view v-on:has-result-received="hasResultReceived"></router-view>
-    </section>
-
-    <footer class="" v-bind:class="{'fixed-bottom': !hasResult}">
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-          <a target="_new" v-bind:href="adp.link.adpBase">
-            &copy;&nbsp;Adaptris Limited <span class="copyright-date"></span>
-          </a>
-        </div>
-      </nav>
-    </footer>
+    <interlok-search v-bind:versions="['4.1.0-RELEASE', '4.0.0-RELEASE']" v-bind:hide-header-footer="false"
+      v-bind:hide-ocs="false"></interlok-search>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
@@ -79,7 +39,8 @@
   <script src="https://cdn.jsdelivr.net/npm/showdown@1.9.1" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/vue-showdown@3.1.0" crossorigin="anonymous"></script>
 
-  <script src="./js/global.js" type="module"></script>
+  <script src="./js/global.js"></script>
+  <script src="./js/link-module.js" type="module"></script>
   <script src="./js/utils.js"></script>
   <script src="./js/utils-module.js" type="module"></script>
   <script src="./js/app.js" type="module"></script>

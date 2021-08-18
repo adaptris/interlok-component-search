@@ -26,17 +26,13 @@ export default {
           <p>
             <h5>Gradle</h5>
             <pre class="bg-light border rounded p-3">
-              <code class="language-groovy" data-lang="groovy">
-compile ("{{this.gav}}") { changing= true}
-              </code>
+<code class="language-groovy" data-lang="groovy">compile ("{{this.gav}}") { changing= true}</code>
             </pre>
           </p>
           <p>
             <h5>Gradle using Interlok Parent</h5>
-            <pre class="bg-light border rounded">
-              <code class="language-groovy" data-lang="groovy">
-interlokCompile ("{{this.gav}}") { changing= true}
-              </code>
+            <pre class="bg-light border rounded p-3">
+<code class="language-groovy" data-lang="groovy">interlokCompile ("{{this.gav}}") { changing= true}</code>
             </pre>
           </p>
         </div>

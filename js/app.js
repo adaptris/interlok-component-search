@@ -1,9 +1,9 @@
-import adp from "./global.js"
+//import adp from "./global.js"
 import ComponentSearch from "./components/ComponentSearch.js"
 import OptionalComponentSearch from "./components/OptionalComponentSearch.js"
+import InterlokSearch from "./components/InterlokSearch.js"
 
 // Config
-const VERSIONS = ["4.1.0-RELEASE", "4.0.0-RELEASE"];
 const LOGO_LOCATION_URL = "https://github.com/sebastien-belin-adp/interlok-optional-component-logos/raw/main/img";
 
 const ComponentSearchPage = {
@@ -12,7 +12,6 @@ const ComponentSearchPage = {
   },
   data: function () {
     return {
-      versions: VERSIONS,
       hasResult: false
     };
   },
@@ -21,7 +20,7 @@ const ComponentSearchPage = {
       this.$emit("hasResultReceived", hasResult);
     }
   },
-  template: `<component-search id="component-search" v-bind:versions="versions" v-on:has-result="hasResultReceived"></component-search>`
+  template: `<component-search id="component-search" v-on:has-result="hasResultReceived"></component-search>`
 };
 const OptionalComponentSearchPage = {
   components: {
@@ -29,7 +28,6 @@ const OptionalComponentSearchPage = {
   },
   data: function () {
     return {
-      versions: VERSIONS,
       logoLocationUrl: LOGO_LOCATION_URL,
       hasResult: false
     };
@@ -39,7 +37,7 @@ const OptionalComponentSearchPage = {
       this.$emit("hasResultReceived", hasResult);
     }
   },
-  template: `<optional-component-search id="component-search" v-bind:versions="versions" v-bind:logo-location-url="logoLocationUrl" v-on:has-result="hasResultReceived"></optional-component-search>`
+  template: `<optional-component-search id="component-search" v-bind:logo-location-url="logoLocationUrl" v-on:has-result="hasResultReceived"></optional-component-search>`
 };
 const NotFound = {
   template: `<h2>Oops, it looks like the page you're looking for doesn't exist.</h2>`
@@ -59,16 +57,9 @@ const router = VueRouter.createRouter({
 });
 
 const app = Vue.createApp({
-  inject: ["adp"],
-  data: function () {
-    return {
-      hasResult: false
-    };
-  },
-  methods: {
-    hasResultReceived: function (value) {
-      this.hasResult = value;
-    }
+  //inject: ["adp"],
+  components: {
+    "interlok-search": InterlokSearch
   }
 });
 
