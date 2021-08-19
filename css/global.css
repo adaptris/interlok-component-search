@@ -112,6 +112,38 @@
 	background-color: var(--advanced-color)!important;
 }
 
+/* Component Type Badge Color */
+.fa-adapter.colored-icon {
+ 	color: var(--adapter-color)!important;
+}
+.fa-channel.colored-icon {
+	color: var(--channel-color)!important;
+}
+.fa-workflow.colored-icon {
+	color: var(--workflow-color)!important;
+}
+.fa-consumer.colored-icon {
+	color: var(--consumer-color)!important;
+}
+.fa-producer.colored-icon {
+	color: var(--producer-color)!important;
+}
+.fa-service.colored-icon {
+	color: var(--service-color)!important;
+}
+.fa-service-collection.colored-icon {
+	color: var(--service-collection-color)!important;
+}
+.fa-connection.colored-icon {
+	color: var(--connection-color)!important;
+}
+.fa-interceptor.colored-icon {
+	color: var(--interceptor-color)!important;
+}
+.fa-extension.colored-icon {
+	color: var(--advanced-color)!important;
+}
+
 
 .card:hover {
 	transform: scale(1.005);

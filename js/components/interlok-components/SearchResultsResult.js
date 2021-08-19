@@ -59,7 +59,7 @@ export default {
         <div class="card" v-bind:class="[borderClass]">
           <div class="card-body">
             <h5 class="card-title">
-              <i class="fa" v-bind:class="[iconClass]"></i>&nbsp;{{ title }}
+              <i class="fa colored-icon" v-bind:class="[iconClass]"></i>&nbsp;{{ title }}
               <small class="text-muted" v-show="since">(Since&nbsp;{{ since }})</small>
             </h5>
             <h6 class="card-subtitle mb-2 text-muted" title="Author">{{ author }}</h6>
