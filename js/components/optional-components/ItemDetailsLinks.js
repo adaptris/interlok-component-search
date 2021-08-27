@@ -25,9 +25,6 @@ export default {
     javadocsUrl: function () {
       return this.item.javadocsUrl;
     },
-    javadocsUrl: function () {
-      return this.item.javadocsUrl;
-    },
     repositoryUrl: function () {
       return this.item.repositoryUrl;
     }
