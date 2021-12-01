@@ -1,7 +1,7 @@
 {
   "optionalComponents": [
     {
-      "id": "interlok-aws-common",
+      "artifactId": "interlok-aws-common",
       "name": "Interlok AWS/Common",
       "description": "Common components for accessing AWS",
       "packaging": "jar",
@@ -24,7 +24,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-aws-common/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-aws-kms",
+      "artifactId": "interlok-aws-kms",
       "name": "Interlok AWS/KMS",
       "description": "Components that interact with AWS KMS to perform sign/encrypt/decrypt/verify operations",
       "packaging": "jar",
@@ -47,7 +47,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-aws-kms/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-aws-kinesis",
+      "artifactId": "interlok-aws-kinesis",
       "name": "Interlok AWS/Kinesis",
       "description": "Components that interact AWS Kinesis data streams",
       "packaging": "jar",
@@ -70,7 +70,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-aws-kinesis/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-aws-kinesis-sdk",
+      "artifactId": "interlok-aws-kinesis-sdk",
       "name": "Interlok AWS/Kinesis SDK",
       "description": "Services that interact with AWS Kinesis Streams",
       "packaging": "jar",
@@ -93,7 +93,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-aws-kinesis-sdk/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-aws-s3",
+      "artifactId": "interlok-aws-s3",
       "name": "Interlok AWS/S3",
       "description": "Services that interact (upload/download/delete) with AWS S3 Buckets and artefacts",
       "packaging": "jar",
@@ -116,7 +116,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-aws-s3/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-aws-sns",
+      "artifactId": "interlok-aws-sns",
       "name": "Interlok AWS/SNS",
       "description": "Publishing to AWS SNS topics",
       "packaging": "jar",
@@ -139,7 +139,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-aws-sns/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-aws-sqs",
+      "artifactId": "interlok-aws-sqs",
       "name": "Interlok AWS/SQS",
       "description": "Publishing & Consuming from AWS SQS natively or via their JMS provider",
       "packaging": "jar",
@@ -162,7 +162,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-aws-sqs/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-kie",
+      "artifactId": "interlok-kie",
       "name": "Interlok Application/KIE",
       "description": "Using KIE/Drools with Interlok services",
       "packaging": "jar",
@@ -185,7 +185,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-kie/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-sap",
+      "artifactId": "interlok-sap",
       "name": "Interlok Application/SAP",
       "description": "Support for SAP R/3 using BAPI/RFC",
       "packaging": "jar",
@@ -208,7 +208,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-sap/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-azure-core",
+      "artifactId": "interlok-azure-core",
       "name": "Interlok Azure/Common",
       "description": "Common components for interacting with Azure and Office 365",
       "packaging": "jar",
@@ -231,7 +231,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-azure-core/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-azure-cosmosdb",
+      "artifactId": "interlok-azure-cosmosdb",
       "name": "Interlok Azure/CosmosDB",
       "description": "Components that interact with Azure CosmosDB",
       "packaging": "jar",
@@ -254,7 +254,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-azure-cosmosdb/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-azure-datalake",
+      "artifactId": "interlok-azure-datalake",
       "name": "Interlok Azure/DataLake",
       "description": "Upload/Download files stored in Azure Datalake blobstorage",
       "packaging": "jar",
@@ -277,7 +277,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-azure-datalake/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-azure-onedrive",
+      "artifactId": "interlok-azure-onedrive",
       "name": "Interlok Azure/OneDrive",
       "description": "Support for upload/download of files stored in Onedrive",
       "packaging": "jar",
@@ -300,7 +300,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-azure-onedrive/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-azure-mail",
+      "artifactId": "interlok-azure-mail",
       "name": "Interlok Azure/Outlook",
       "description": "Send/Receive emails via Office 365/Exchange",
       "packaging": "jar",
@@ -323,7 +323,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-azure-mail/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-apache-geode",
+      "artifactId": "interlok-apache-geode",
       "name": "Interlok Cache/Apache Geode",
       "description": "Using Apache Geode as a cache provider within Interlok",
       "packaging": "jar",
@@ -346,7 +346,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-apache-geode/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-ehcache",
+      "artifactId": "interlok-ehcache",
       "name": "Interlok Cache/EHCache",
       "description": "Using ehcache 2.x as a cache provider within Interlok",
       "packaging": "jar",
@@ -369,7 +369,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-ehcache/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-jsr107-cache",
+      "artifactId": "interlok-jsr107-cache",
       "name": "Interlok Cache/JSR107",
       "description": "Using any JSR107 cache implementation as a cache provider within Interlok",
       "packaging": "jar",
@@ -392,7 +392,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-jsr107-cache/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-varsub",
+      "artifactId": "interlok-varsub",
       "name": "Interlok Config/variable substitutions",
       "description": "SystemProperty / Environment / Variable substitution Config Pre-processors",
       "packaging": "jar",
@@ -415,7 +415,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-varsub/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-xinclude",
+      "artifactId": "interlok-xinclude",
       "name": "Interlok Config/xinclude",
       "description": "XSLT and XInclude Config Pre-processors",
       "packaging": "jar",
@@ -438,7 +438,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-xinclude/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-gcloud-pubsub",
+      "artifactId": "interlok-gcloud-pubsub",
       "name": "Interlok Google/GCloud PubSub",
       "description": "Consuming and producing messages via Google Cloud PubSub",
       "packaging": "jar",
@@ -461,7 +461,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-gcloud-pubsub/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-hpcc",
+      "artifactId": "interlok-hpcc",
       "name": "Interlok HPCC/dfuplus",
       "description": "Upload/Download of files via dfuplus executable",
       "packaging": "jar",
@@ -484,7 +484,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-hpcc/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-apache-http",
+      "artifactId": "interlok-apache-http",
       "name": "Interlok HTTP/Apache HTTP(4)",
       "description": "HTTP(s) using version 4 of Apache HTTP client",
       "packaging": "jar",
@@ -507,7 +507,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-apache-http/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-apache-http5",
+      "artifactId": "interlok-apache-http5",
       "name": "Interlok HTTP/Apache HTTP(5)",
       "description": "HTTP(s) using version 5 of Apache HTTP client",
       "packaging": "jar",
@@ -530,7 +530,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-apache-http5/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-okhttp",
+      "artifactId": "interlok-okhttp",
       "name": "Interlok HTTP/OkHttp",
       "description": "HTTP producer using the OkHttp library",
       "packaging": "jar",
@@ -553,7 +553,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-okhttp/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-jclouds-aws-sts",
+      "artifactId": "interlok-jclouds-aws-sts",
       "name": "Interlok JClouds/AWS STS",
       "description": "Connect using Apache JClouds to AWS Services using AWS Secure Token Service",
       "packaging": "jar",
@@ -576,7 +576,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-jclouds-aws-sts/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-jclouds-blobstore",
+      "artifactId": "interlok-jclouds-blobstore",
       "name": "Interlok JClouds/Blobstore",
       "description": "Use Apache jclouds to access your cloud storage",
       "packaging": "jar",
@@ -599,7 +599,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-jclouds-blobstore/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-jclouds-common",
+      "artifactId": "interlok-jclouds-common",
       "name": "Interlok JClouds/Common",
       "description": "Common classes for interacting with cloud providers via Apache JClouds",
       "packaging": "jar",
@@ -622,7 +622,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-jclouds-common/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-jmx-amqp",
+      "artifactId": "interlok-jmx-amqp",
       "name": "Interlok JMX/AMQP",
       "description": "Tunnelling JMX calls using AMQP via Apache QPID",
       "packaging": "jar",
@@ -645,7 +645,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-jmx-amqp/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-jmx-activemq",
+      "artifactId": "interlok-jmx-activemq",
       "name": "Interlok JMX/ActiveMQ",
       "description": "Tunnelling JMX calls via ActiveMQ",
       "packaging": "jar",
@@ -668,7 +668,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-jmx-activemq/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-jmx-jms-common",
+      "artifactId": "interlok-jmx-jms-common",
       "name": "Interlok JMX/Common",
       "description": "Common classes required to tunnel JMX calls",
       "packaging": "jar",
@@ -691,7 +691,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-jmx-jms-common/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-jolokia",
+      "artifactId": "interlok-jolokia",
       "name": "Interlok JMX/Jolokia",
       "description": "Tunnelling JMX calls via Jolokia",
       "packaging": "jar",
@@ -714,7 +714,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-jolokia/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-jmx-solace",
+      "artifactId": "interlok-jmx-solace",
       "name": "Interlok JMX/Solace",
       "description": "Tunnelling JMX calls via Solace",
       "packaging": "jar",
@@ -737,7 +737,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-jmx-solace/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-jmx-sonicmq",
+      "artifactId": "interlok-jmx-sonicmq",
       "name": "Interlok JMX/SonicMQ",
       "description": "Tunnelling JMX calls via SonicMQ",
       "packaging": "jar",
@@ -760,7 +760,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-jmx-sonicmq/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-licensing",
+      "artifactId": "interlok-licensing",
       "name": "Interlok Licence",
       "description": "Licensing support within Interlok",
       "packaging": "jar",
@@ -783,7 +783,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-licensing/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-mail",
+      "artifactId": "interlok-mail",
       "name": "Interlok Mail/Javamail",
       "description": "Integration with mail servers using javamail and apache mail libraries",
       "packaging": "jar",
@@ -806,7 +806,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-mail/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-activemq",
+      "artifactId": "interlok-activemq",
       "name": "Interlok Management/ActiveMQ",
       "description": "Embedded ActiveMQ management component",
       "packaging": "jar",
@@ -829,7 +829,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-activemq/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-artemis",
+      "artifactId": "interlok-artemis",
       "name": "Interlok Management/Artemis",
       "description": "Embedded Apache Artemis management component",
       "packaging": "jar",
@@ -852,7 +852,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-artemis/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-cluster-manager",
+      "artifactId": "interlok-cluster-manager",
       "name": "Interlok Management/Cluster",
       "description": "Management component for reporting on cluster instances.",
       "packaging": "jar",
@@ -875,7 +875,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-cluster-manager/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-exec",
+      "artifactId": "interlok-exec",
       "name": "Interlok Management/Exec",
       "description": "Management Component that starts arbitrary programs as part of Interlok bootstrap",
       "packaging": "jar",
@@ -898,7 +898,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-exec/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-failover",
+      "artifactId": "interlok-failover",
       "name": "Interlok Management/Failover",
       "description": "Starting Interlok as part of a failover cluster",
       "packaging": "jar",
@@ -921,7 +921,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-failover/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-proxy",
+      "artifactId": "interlok-proxy",
       "name": "Interlok Management/Proxy",
       "description": "Proxy another HTTP(s) endpoint",
       "packaging": "jar",
@@ -944,7 +944,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-proxy/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-rest-base",
+      "artifactId": "interlok-rest-base",
       "name": "Interlok Management/REST: Base",
       "description": "Common components for Interloks RESTful management components",
       "packaging": "jar",
@@ -967,7 +967,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-rest-base/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-rest-cluster",
+      "artifactId": "interlok-rest-cluster",
       "name": "Interlok Management/REST: Cluster",
       "description": "Internal Cluster management via a REST interface",
       "packaging": "jar",
@@ -990,7 +990,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-rest-cluster/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-rest-provider-datadog",
+      "artifactId": "interlok-rest-provider-datadog",
       "name": "Interlok Management/REST: Datadog",
       "description": "Expose metrics in a OpenTelemetry compliant fashion",
       "packaging": "jar",
@@ -1013,7 +1013,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-rest-provider-datadog/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-rest-health-check",
+      "artifactId": "interlok-rest-health-check",
       "name": "Interlok Management/REST: Health Check",
       "description": "'Alive/Ready' and general health exposed as a REST endpoint",
       "packaging": "jar",
@@ -1036,7 +1036,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-rest-health-check/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-rest-metrics-profiler",
+      "artifactId": "interlok-rest-metrics-profiler",
       "name": "Interlok Management/REST: Interlok Metrics",
       "description": "Collecting internal metrics for exposure",
       "packaging": "jar",
@@ -1059,7 +1059,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-rest-metrics-profiler/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-rest-metrics-jvm",
+      "artifactId": "interlok-rest-metrics-jvm",
       "name": "Interlok Management/REST: JVM Metrics",
       "description": "Collecting JVM metrics and exposing them via a REST endpoint",
       "packaging": "jar",
@@ -1082,7 +1082,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-rest-metrics-jvm/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-rest-provider-prometheus",
+      "artifactId": "interlok-rest-provider-prometheus",
       "name": "Interlok Management/REST: Prometheus",
       "description": "Expose metrics in a OpenTelemetry compliant fashion",
       "packaging": "jar",
@@ -1105,7 +1105,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-rest-provider-prometheus/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-sshtunnel",
+      "artifactId": "interlok-sshtunnel",
       "name": "Interlok Management/SSH Tunnel",
       "description": "Management Component that starts some SSH Tunnels",
       "packaging": "jar",
@@ -1128,7 +1128,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-sshtunnel/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-amqp",
+      "artifactId": "interlok-amqp",
       "name": "Interlok Messaging/AMQP",
       "description": "Treating a AMQP 0.9.0/1.0 Provider as a JMS via Apache QPID",
       "packaging": "jar",
@@ -1151,7 +1151,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-amqp/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-kafka",
+      "artifactId": "interlok-kafka",
       "name": "Interlok Messaging/Kafka",
       "description": "Using Apache Kafka as a messaging platform",
       "packaging": "jar",
@@ -1174,7 +1174,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-kafka/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-mqtt",
+      "artifactId": "interlok-mqtt",
       "name": "Interlok Messaging/MQTT",
       "description": "Use a MQTT broker as a messaging platform",
       "packaging": "jar",
@@ -1197,7 +1197,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-mqtt/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-msmq-javonet",
+      "artifactId": "interlok-msmq-javonet",
       "name": "Interlok Messaging/MSMQ",
       "description": "Connect to MSMQ via the javonet .NET bridge",
       "packaging": "jar",
@@ -1220,7 +1220,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-msmq-javonet/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-nats",
+      "artifactId": "interlok-nats",
       "name": "Interlok Messaging/NATS",
       "description": "Using NATS.io as a messaging platform",
       "packaging": "jar",
@@ -1243,7 +1243,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-nats/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-jms-oracleaq",
+      "artifactId": "interlok-jms-oracleaq",
       "name": "Interlok Messaging/OracleAQ",
       "description": "Using OracleAQ as a JMS provider",
       "packaging": "jar",
@@ -1266,7 +1266,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-jms-oracleaq/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-rabbitmq",
+      "artifactId": "interlok-rabbitmq",
       "name": "Interlok Messaging/RabbitMQ",
       "description": "Connectivity with RabbitMQ through their libraries",
       "packaging": "jar",
@@ -1289,7 +1289,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-rabbitmq/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-solace",
+      "artifactId": "interlok-solace",
       "name": "Interlok Messaging/Solace",
       "description": "Using Solace as a Messaging Provider",
       "packaging": "jar",
@@ -1312,7 +1312,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-solace/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-jms-sonicmq",
+      "artifactId": "interlok-jms-sonicmq",
       "name": "Interlok Messaging/SonicMQ",
       "description": "Using SonicMQ as a JMS Provider",
       "packaging": "jar",
@@ -1335,7 +1335,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-jms-sonicmq/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-tibco",
+      "artifactId": "interlok-tibco",
       "name": "Interlok Messaging/Tibco",
       "description": "Using Tibco as as messaging platform",
       "packaging": "jar",
@@ -1358,7 +1358,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-tibco/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-webspheremq",
+      "artifactId": "interlok-webspheremq",
       "name": "Interlok Messaging/WebsphereMQ",
       "description": "Use IBM WebsphereMQ as your messaging platform",
       "packaging": "jar",
@@ -1381,7 +1381,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-webspheremq/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-triggered",
+      "artifactId": "interlok-triggered",
       "name": "Interlok Misc/Triggered",
       "description": "Custom Channel implementation that can be externally triggered to start/stop",
       "packaging": "jar",
@@ -1404,7 +1404,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-triggered/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-oauth-azure",
+      "artifactId": "interlok-oauth-azure",
       "name": "Interlok OAUTH/Azure",
       "description": "Retrieving OAUTH access tokens from Azure",
       "packaging": "jar",
@@ -1427,7 +1427,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-oauth-azure/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-oauth-generic",
+      "artifactId": "interlok-oauth-generic",
       "name": "Interlok OAUTH/Generic",
       "description": "Handling OAUTH where the provider does not have an explicit API or SDK",
       "packaging": "jar",
@@ -1450,7 +1450,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-oauth-generic/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-oauth-gcloud",
+      "artifactId": "interlok-oauth-gcloud",
       "name": "Interlok OAUTH/Google",
       "description": "Retrieving OAUTH access tokens from Google Cloud",
       "packaging": "jar",
@@ -1473,7 +1473,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-oauth-gcloud/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-oauth-salesforce",
+      "artifactId": "interlok-oauth-salesforce",
       "name": "Interlok OAUTH/Salesforce",
       "description": "Retrieving OAUTH access tokens from Salesforce",
       "packaging": "jar",
@@ -1496,7 +1496,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-oauth-salesforce/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-as400",
+      "artifactId": "interlok-as400",
       "name": "Interlok OS/AS400",
       "description": "Interacting with AS400 systems",
       "packaging": "jar",
@@ -1519,7 +1519,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-as400/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-profiler",
+      "artifactId": "interlok-profiler",
       "name": "Interlok Profiler",
       "description": "Perform instrumentation to profile Interlok runtime.",
       "packaging": "jar",
@@ -1542,7 +1542,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-profiler/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-expressions",
+      "artifactId": "interlok-expressions",
       "name": "Interlok Scripting/Expressions",
       "description": "Simple mathematical expressions inside your configuration",
       "packaging": "jar",
@@ -1565,7 +1565,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-expressions/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-jruby",
+      "artifactId": "interlok-jruby",
       "name": "Interlok Scripting/JRuby",
       "description": "Explicit JRuby scripting capabilities rather than via JSR223",
       "packaging": "jar",
@@ -1588,7 +1588,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-jruby/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-pgp",
+      "artifactId": "interlok-pgp",
       "name": "Interlok Security/PGP",
       "description": "A collection of services that provide PGP encryption, decryption, signing, and verification.",
       "packaging": "jar",
@@ -1611,7 +1611,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-pgp/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-xml-security",
+      "artifactId": "interlok-xml-security",
       "name": "Interlok Security/XML",
       "description": "Services that support JSR106 XML Encryption standard.",
       "packaging": "jar",
@@ -1634,7 +1634,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-xml-security/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-service-tester",
+      "artifactId": "interlok-service-tester",
       "name": "Interlok Service Tester/Core",
       "description": "Unit testing framework for Interlok",
       "packaging": "jar",
@@ -1657,7 +1657,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-service-tester/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-service-tester-json",
+      "artifactId": "interlok-service-tester-json",
       "name": "Interlok Service Tester/JSON",
       "description": "JSON Assertions for service-tester",
       "packaging": "jar",
@@ -1680,7 +1680,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-service-tester-json/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-service-tester-wiremock",
+      "artifactId": "interlok-service-tester-wiremock",
       "name": "Interlok Service Tester/Wiremock",
       "description": "Wiremock boostrapper for service-tester",
       "packaging": "jar",
@@ -1703,7 +1703,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-service-tester-wiremock/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-service-tester-xml",
+      "artifactId": "interlok-service-tester-xml",
       "name": "Interlok Service Tester/XML",
       "description": "XML Assertions for service-tester using xmlunit",
       "packaging": "jar",
@@ -1726,7 +1726,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-service-tester-xml/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-cassandra",
+      "artifactId": "interlok-cassandra",
       "name": "Interlok Storage/Cassandra",
       "description": "Services to interace with Datastax Cassandra",
       "packaging": "jar",
@@ -1749,7 +1749,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-cassandra/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-elastic-common",
+      "artifactId": "interlok-elastic-common",
       "name": "Interlok Storage/Elastic: Common",
       "description": "Elasticsearch components that are not transport specific",
       "packaging": "jar",
@@ -1772,7 +1772,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-elastic-common/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-elastic-rest",
+      "artifactId": "interlok-elastic-rest",
       "name": "Interlok Storage/Elastic: REST Client",
       "description": "Producing to Elasticsearch using their REST api",
       "packaging": "jar",
@@ -1795,7 +1795,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-elastic-rest/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-filesystem",
+      "artifactId": "interlok-filesystem",
       "name": "Interlok Storage/Filesystem",
       "description": "Perform filesystem operations within Interlok",
       "packaging": "jar",
@@ -1818,7 +1818,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-filesystem/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-flyway",
+      "artifactId": "interlok-flyway",
       "name": "Interlok Storage/Flyway",
       "description": "Custom JDBC Connection implementation that incorporates Flyway database migration",
       "packaging": "jar",
@@ -1841,7 +1841,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-flyway/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-jdbc",
+      "artifactId": "interlok-jdbc",
       "name": "Interlok Storage/JDBC",
       "description": "Improved services for interacting with JDBC",
       "packaging": "jar",
@@ -1864,7 +1864,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-jdbc/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-mongodb",
+      "artifactId": "interlok-mongodb",
       "name": "Interlok Storage/MongoDB",
       "description": "Services and Connections for interacting with MongoDB",
       "packaging": "jar",
@@ -1887,7 +1887,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-mongodb/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-csv",
+      "artifactId": "interlok-csv",
       "name": "Interlok Transform/CSV",
       "description": "Handling CSV files using Interlok; transform to XML, splitting, JDBC utilities",
       "packaging": "jar",
@@ -1910,7 +1910,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-csv/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-edi-stream",
+      "artifactId": "interlok-edi-stream",
       "name": "Interlok Transform/EDI",
       "description": "Interlok EDI Transformation services with caching of definitions",
       "packaging": "jar",
@@ -1933,7 +1933,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-edi-stream/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-edi-legacy",
+      "artifactId": "interlok-edi-legacy",
       "name": "Interlok Transform/EDI legacy",
       "description": "Interlok EDI Legacy transformations",
       "packaging": "jar",
@@ -1956,7 +1956,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-edi-legacy/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-excel",
+      "artifactId": "interlok-excel",
       "name": "Interlok Transform/Excel",
       "description": "Extract data from an Excel spreadsheet",
       "packaging": "jar",
@@ -1979,7 +1979,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-excel/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-flatfile",
+      "artifactId": "interlok-flatfile",
       "name": "Interlok Transform/Flatfile",
       "description": "Transformation of Flat files into XML",
       "packaging": "jar",
@@ -2002,7 +2002,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-flatfile/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-jq",
+      "artifactId": "interlok-jq",
       "name": "Interlok Transform/JQ",
       "description": "Transform JSON using JQ style syntax",
       "packaging": "jar",
@@ -2025,7 +2025,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-jq/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-jslt",
+      "artifactId": "interlok-jslt",
       "name": "Interlok Transform/JSLT",
       "description": "Support for JSON transforms via JSLT",
       "packaging": "jar",
@@ -2048,7 +2048,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-jslt/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-json",
+      "artifactId": "interlok-json",
       "name": "Interlok Transform/JSON",
       "description": "Everything JSON related; transformations, schemas, json-path (xpath-alike), splitting",
       "packaging": "jar",
@@ -2071,7 +2071,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-json/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-json-streaming",
+      "artifactId": "interlok-json-streaming",
       "name": "Interlok Transform/JSON Streaming",
       "description": "Streaming JSON in a STaX-alike manner",
       "packaging": "jar",
@@ -2094,7 +2094,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-json-streaming/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-csv-json",
+      "artifactId": "interlok-csv-json",
       "name": "Interlok Transform/JSON+CSV",
       "description": "Transform CSV into JSON and vice versa",
       "packaging": "jar",
@@ -2117,7 +2117,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-csv-json/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-json-web-token",
+      "artifactId": "interlok-json-web-token",
       "name": "Interlok Transform/JWT",
       "description": "Handling JWT in Interlok",
       "packaging": "jar",
@@ -2140,7 +2140,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-json-web-token/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-pdf",
+      "artifactId": "interlok-pdf",
       "name": "Interlok Transform/PDF",
       "description": "Transform a document into PDF",
       "packaging": "jar",
@@ -2163,7 +2163,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-pdf/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-stax",
+      "artifactId": "interlok-stax",
       "name": "Interlok Transform/STaX",
       "description": "Using STaX events to parse/emit XML within Interlok",
       "packaging": "jar",
@@ -2186,7 +2186,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-stax/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-swift",
+      "artifactId": "interlok-swift",
       "name": "Interlok Transform/SWIFT",
       "description": "Handle transforms to and from the SWIFT format",
       "packaging": "jar",
@@ -2209,7 +2209,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-swift/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-vcs-git",
+      "artifactId": "interlok-vcs-git",
       "name": "Interlok VCS/GIT",
       "description": "Checking config out of GIT on startup",
       "packaging": "jar",
@@ -2232,7 +2232,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-vcs-git/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-webservice-cxf",
+      "artifactId": "interlok-webservice-cxf",
       "name": "Interlok Webservices/CXF",
       "description": "Execute webservices using Apache CXF",
       "packaging": "jar",
@@ -2255,7 +2255,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-webservice-cxf/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-xa-activemq",
+      "artifactId": "interlok-xa-activemq",
       "name": "Interlok XA/ActiveMQ",
       "description": "ActiveMQ specific XA Vendor implementations",
       "packaging": "jar",
@@ -2278,7 +2278,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-xa-activemq/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-xa-atomikos",
+      "artifactId": "interlok-xa-atomikos",
       "name": "Interlok XA/Atomikos",
       "description": "XA JMS Consumer/Producer implementations that use Atomikos as the underlying transaction manager",
       "packaging": "jar",
@@ -2301,7 +2301,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-xa-atomikos/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-xa-jms",
+      "artifactId": "interlok-xa-jms",
       "name": "Interlok XA/Common",
       "description": "XA Components that are not provider specific",
       "packaging": "jar",
@@ -2324,7 +2324,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-xa-jms/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-xa-solace",
+      "artifactId": "interlok-xa-solace",
       "name": "Interlok XA/Solace",
       "description": "Solace specific XA Vendor implementations",
       "packaging": "jar",
@@ -2347,7 +2347,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-xa-solace/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-xa-tibco",
+      "artifactId": "interlok-xa-tibco",
       "name": "Interlok XA/Tibco",
       "description": "Tibco specific XA Vendor implementations",
       "packaging": "jar",
@@ -2370,7 +2370,7 @@
       "javadocsUrl": "https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-xa-tibco/4.3.0-RELEASE/"
     },
     {
-      "id": "interlok-xa-wmq",
+      "artifactId": "interlok-xa-wmq",
       "name": "Interlok XA/WebsphereMQ",
       "description": "WebsphereMQ specific XA Vendor implementations",
       "packaging": "jar",
