@@ -13,6 +13,7 @@ var adp = adp || {};
     includeScore: true,
     minMatchCharLength: 2,
     threshold: 0.3,
+    ignoreLocation: true,
     useExtendedSearch: true,
     findAllMatches: true,
     /*ignoreFieldNorm: true,*/
@@ -42,6 +43,10 @@ var adp = adp || {};
         weight: 0.9
       },
       {
+        name: "profile.summary",
+        weight: 0.4
+      },
+      {
         name: "projectInfo.Implementation-Title",
         weight: 0.5
       },
@@ -56,6 +61,7 @@ var adp = adp || {};
     includeScore: true,
     minMatchCharLength: 2,
     threshold: 0.3,
+    ignoreLocation: true,
     useExtendedSearch: true,
     findAllMatches: true,
     /*ignoreFieldNorm: true,*/

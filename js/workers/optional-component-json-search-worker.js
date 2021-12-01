@@ -11,6 +11,7 @@ var adp = adp || {};
     includeScore: true,
     minMatchCharLength: 2,
     threshold: 0.3,
+    ignoreLocation: true,
     useExtendedSearch: true,
     findAllMatches: true,
     /*ignoreFieldNorm: true,*/
