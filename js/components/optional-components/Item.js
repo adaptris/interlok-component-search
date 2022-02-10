@@ -33,7 +33,7 @@ export default {
       return this.result.item.target ? this.result.item.target : "";
     },
     license: function () {
-      return this.result.item.license;
+      return this.result.item.license && this.result.item.license != "false";
     },
     tags: function () {
       return this.result.item.tags ? this.result.item.tags.split(",") : [];
