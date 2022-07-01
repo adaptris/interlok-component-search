@@ -1,4 +1,4 @@
-importScripts("https://cdn.jsdelivr.net/npm/fuse.js@6.4.6");
+importScripts("https://cdn.jsdelivr.net/npm/fuse.js@6.6.2");
 importScripts("../utils.js");
 
 var adp = adp || {};
