@@ -25,8 +25,8 @@ jobs:
       uses: actions/github-script@v6.4.1
       with:
         script: |
-          const cVersions = ${{ steps.list-file-versions.outputs.component-versions }}.split(" ");
-          const oVersions = ${{ steps.list-file-versions.outputs.optional-versions }}.split(" ");
+          const cVersions = "${{ steps.list-file-versions.outputs.component-versions }}".split(" ");
+          const oVersions = "${{ steps.list-file-versions.outputs.optional-versions }}".split(" ");
           function findMatchingVersions() {
             var matchingVersions = [];
             for (const cVersion of cVersions) {
