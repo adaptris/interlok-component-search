@@ -16,8 +16,8 @@ jobs:
     - name: List File Versions
       id: list-file-versions
       run: |
-        cVersions=$(ls data | grep 'interlok-component' | sed -E 's/interlok-component-(.*).json/\1/p')
-        oVersions=$(ls data | grep 'interlok-optional-component' | sed -E 's/interlok-optional-component-(.*).json/\1/p'')
+        cVersions=$(ls data | tr "\n" " " | grep 'interlok-component' | sed -E 's/interlok-component-(.*).json/\1/p')
+        oVersions=$(ls data | tr "\n" " " | grep 'interlok-optional-component' | sed -E 's/interlok-optional-component-(.*).json/\1/p'')
         echo "component-versions=$cVersions" >> $GITHUB_OUTPUT
         echo "optional-versions=$oVersions" >> $GITHUB_OUTPUT
     - name: Get Matching Versions
