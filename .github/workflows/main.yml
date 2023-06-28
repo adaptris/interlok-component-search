@@ -40,4 +40,4 @@ jobs:
         result-encoding: string
     - name: Write To Versions JSON File
       run: |
-        echo ${{ steps.get-matching-versions.outputs }}
+        echo ${{ steps.get-matching-versions.outputs.result }}
