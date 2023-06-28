@@ -14,7 +14,7 @@ export default {
         };
     },
     created: function () {
-        var versionsJsonUrl= `${this.dataLocation.replace("../", "")}/versions.json`;
+        var versionsJsonUrl= `${this.dataLocation.replaceAll("../", "")}/versions.json`;
         async function fetchVersionsJson() {
             const response = await fetch(versionsJsonUrl);
         
