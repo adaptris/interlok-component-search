@@ -2,16 +2,35 @@ import adpLink from "../link-module.js"
 
 export default {
     props: {
-        versions: Array,
         dataLocation: String,
         hideHeaderFooter: Boolean,
         hideOcs: Boolean
     },
     data: function () {
         return {
+            versions: [],
             adaptrisLink: adpLink.adpBase,
             hasResult: false
         };
+    },
+    created: function () {
+        var versionsJsonUrl= `${this.dataLocation}/versions.json`;
+        async function fetchVersionsJson() {
+            const response = await fetch(versionsJsonUrl);
+        
+            if (!response.ok) {
+                const message = `Could not open versions file: ${response.status} -  ${response.statusText}.`;
+                throw new Error(message);
+            }
+        
+            return response.json();
+        }
+        fetchVersionsJson().then(v => this.versions = v);
+    },
+    computed: {
+        hasVersions: function () {
+            return this.versions.length > 0;
+        }
     },
     methods: {
         hasResultReceived: function (value) {
@@ -19,7 +38,7 @@ export default {
         }
     },
     template: /*html*/ `
-        <div class="interlok-search">
+        <div class="interlok-search" v-if="hasVersions">
             <header class="mb-4 sticky-top" v-if="!hideHeaderFooter">
                 <nav class="navbar navbar-expand-lg navbar-light bg-light search-bar">
                     <div class="container-fluid">
