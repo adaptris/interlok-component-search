@@ -30,8 +30,8 @@ jobs:
           function findMatchingVersions() {
             var matchingVersions = [];
             for (const cVersion of cVersions) {
-              if (cVersion != "" && oVersions.includes(cVersion.toUpperCase())) {
-               matchingVersions.push(cVersion);
+              if (cVersion != "" && oVersions.includes(cVersion)) {
+               matchingVersions.push(cVersion.toUpperCase());
               }
             }
             console.log(matchingVersions);
