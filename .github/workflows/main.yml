@@ -16,8 +16,8 @@ jobs:
     - name: List File Versions
       id: list-file-versions
       run: |
-        cVersions=$(ls ./data | grep 'interlok-component' | sed -E 's/interlok-component-(.*)-release.json/\1/p' | tr "\n" " ")
-        oVersions=$(ls data | grep 'interlok-optional-component' | sed -E 's/interlok-optional-component-(.*)-release.json/\1/p' | tr "\n" " ")
+        cVersions=$(ls ./data | grep 'interlok-component' | sed -E 's/interlok-component-(.*).json/\1/p' | tr "\n" " ")
+        oVersions=$(ls data | grep 'interlok-optional-component' | sed -E 's/interlok-optional-component-(.*).json/\1/p' | tr "\n" " ")
         echo "component-versions=$cVersions" >> $GITHUB_OUTPUT
         echo "optional-versions=$oVersions" >> $GITHUB_OUTPUT
     - name: Get Matching Versions
@@ -30,10 +30,11 @@ jobs:
           function findMatchingVersions() {
             var matchingVersions = [];
             for (const cVersion of cVersions) {
-              if (cVersion != "" && oVersions.includes(cVersion)) {
+              if (cVersion != "" && oVersions.includes(cVersion.toUpperCase())) {
                matchingVersions.push(cVersion);
               }
             }
+            console.log(matchingVersions);
             return matchingVersions;
           }
           // Doing it twice to escape double quotes
