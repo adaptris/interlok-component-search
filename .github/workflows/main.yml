@@ -16,7 +16,7 @@ jobs:
     - name: List File Versions
       id: list-file-versions
       run: |
-        cVersions=$(ls data | grep 'interlok-component' | sed -E 's/interlok-component-(.*)-release.json/\1/p' | tr "\n" " ")
+        cVersions=$(ls ./data | grep 'interlok-component' | sed -E 's/interlok-component-(.*)-release.json/\1/p' | tr "\n" " ")
         oVersions=$(ls data | grep 'interlok-optional-component' | sed -E 's/interlok-optional-component-(.*)-release.json/\1/p' | tr "\n" " ")
         echo "component-versions=$cVersions" >> $GITHUB_OUTPUT
         echo "optional-versions=$oVersions" >> $GITHUB_OUTPUT
@@ -40,4 +40,5 @@ jobs:
         result-encoding: string
     - name: Write To Versions JSON File
       run: |
-        echo ${{ steps.get-matching-versions.outputs.result }}
+        echo "Setting versions.json with ${{ steps.get-matching-versions.outputs.result }}"
+        echo "${{ steps.get-matching-versions.outputs.result }}" > ./data/versions.json
