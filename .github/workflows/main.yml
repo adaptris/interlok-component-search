@@ -37,7 +37,7 @@ jobs:
             return matchingVersions;
           }
           // Doing it twice to escape double quotes
-          return JSON.stringify(JSON.stringify(findMatchingVersions()));
+          return JSON.stringify(JSON.stringify(findMatchingVersions().reverse()));
         result-encoding: string
     - name: Write To Versions JSON File
       run: |
