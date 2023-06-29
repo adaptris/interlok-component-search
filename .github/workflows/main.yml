@@ -42,3 +42,12 @@ jobs:
       run: |
         echo "Setting versions.json with ${{ steps.get-matching-versions.outputs.result }}"
         echo "${{ steps.get-matching-versions.outputs.result }}" > ./data/versions.json
+    - name: Setup Git Config
+      run: |
+        git config user.name "Interlok Dev"
+        git config user.email "<>"
+    - name: Git Commit Push
+      run: |
+        git add ./data/versions.json
+        git commit -m "Update versions.json with all existing indexed versions"
+        git push origin
