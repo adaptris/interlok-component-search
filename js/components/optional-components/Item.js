@@ -2,6 +2,7 @@ export default {
   props: {
     result: Object,
     logoLocationUrl: String,
+    isMultiSelected: Boolean
   },
   data: function () {
     return {
@@ -55,11 +56,17 @@ export default {
     },
     selectItem: function () {
       this.emitSelectItem(this.result.item);
+    },
+    emitMultiSelectItem: function (selectedItem) {
+      this.$emit("multi-select-item", selectedItem);
+    },
+    mutliSelectItem: function () {
+      this.emitMultiSelectItem(this.result.item);
     }
   },
   template: /*html*/ `
       <div class="col">
-        <div class="card h-100 card-optional-component">
+        <div v-on:click="mutliSelectItem" class="card h-100 card-optional-component" v-bind:class="{ 'border-info': isMultiSelected }">
           <img v-bind:src="logo" v-on:error="setDefaultLogo" class="card-img-top" v-bind:alt="artifactId" width="80" height="80">
           <div class="card-body">
             <h5 class="card-title">
