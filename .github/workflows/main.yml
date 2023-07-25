@@ -1,0 +1,55 @@
+name: Update Version
+
+on:
+  push:
+    branches:
+    - main
+  workflow_dispatch:
+
+jobs:
+  update-vesion:
+    name: Update Version
+    runs-on: 'ubuntu-latest'
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: List File Versions
+      id: list-file-versions
+      run: |
+        cVersions=$(ls ./data | grep 'interlok-component' | sed -E 's/interlok-component-(.*).json/\1/' | tr "\n" " ")
+        oVersions=$(ls data | grep 'interlok-optional-component' | sed -E 's/interlok-optional-component-(.*).json/\1/' | tr "\n" " ")
+        echo "component-versions=$cVersions" >> $GITHUB_OUTPUT
+        echo "optional-versions=$oVersions" >> $GITHUB_OUTPUT
+    - name: Get Matching Versions
+      id: get-matching-versions
+      uses: actions/github-script@v6.4.1
+      with:
+        script: |
+          const cVersions = "${{ steps.list-file-versions.outputs.component-versions }}".split(" ");
+          const oVersions = "${{ steps.list-file-versions.outputs.optional-versions }}".split(" ");
+          function findMatchingVersions() {
+            var matchingVersions = [];
+            for (const cVersion of cVersions) {
+              if (cVersion != "" && oVersions.includes(cVersion)) {
+               matchingVersions.push(cVersion.toUpperCase());
+              }
+            }
+            console.log(matchingVersions);
+            return matchingVersions;
+          }
+          // Doing it twice to escape double quotes
+          return JSON.stringify(JSON.stringify(findMatchingVersions().reverse()));
+        result-encoding: string
+    - name: Write To Versions JSON File
+      run: |
+        echo "Setting versions.json with ${{ steps.get-matching-versions.outputs.result }}"
+        echo "${{ steps.get-matching-versions.outputs.result }}" > ./data/versions.json
+    - name: Setup Git Config
+      run: |
+        git config user.name "Interlok Dev"
+        git config user.email "<>"
+    - name: Git Commit Push
+      run: |
+        git add ./data/versions.json
+        git commit -m "Update versions.json with all existing indexed versions"
+        git push origin
