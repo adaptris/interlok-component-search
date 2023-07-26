@@ -4,12 +4,12 @@ export default {
   },
   computed: {
     parentVersion: function () {
-      return this.items.length > 0 ? this.items[0].version[0] : 5;
+      return "v" + (this.items.length > 0 ? this.items[0].version[0] : 5);
     },
     buildGradle: function () {
-      var code = `
+      const codeTemplate = `
 ext {
-  interlokParentGradle = "https://raw.githubusercontent.com/adaptris/interlok-build-parent/main/v${this.parentVersion}/build.gradle"
+  interlokParentGradle = "https://raw.githubusercontent.com/adaptris/interlok-build-parent/main/#interlokParentVersion/build.gradle"
 }
 
 allprojects {
@@ -17,23 +17,25 @@ allprojects {
 }
 
 dependencies {
+#interlokCompile
+
+#interlokJavadocs
+}
 `;
-      
+
+const interlokCompile = [];
+const interlokJavadocs = [];
+
       for (let index = 0; index < this.items.length; index++) {
         const item = this.items[index];
-        console.log(item);
-        code += `  interlokCompile ("${item.groupId}:${item.artifactId}:${item.version}") { changing= true }\n`;
+        interlokCompile.push(`  interlokCompile ("${item.groupId}:${item.artifactId}:${item.version}") { changing= true }`);
+        interlokJavadocs.push(`  interlokJavadocs ("${item.groupId}:${item.artifactId}:${item.version}") { changing=true; transitive=false }`);
       }
 
-      code += `\n`;
-      
-      for (let index = 0; index < this.items.length; index++) {
-        const item = this.items[index];
-        console.log(item);
-        code += `  interlokJavadocs ("${item.groupId}:${item.artifactId}:${item.version}") { changing=true; transitive=false }\n`;
-      }
+      const code = codeTemplate.replace("#interlokParentVersion", this.parentVersion)
+                               .replace("#interlokCompile", interlokCompile.join("\n"))
+                               .replace("#interlokJavadocs", interlokJavadocs.join("\n"));
 
-      code += `}`;
       return code;
     }
   },
