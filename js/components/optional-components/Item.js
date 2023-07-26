@@ -88,7 +88,7 @@ export default {
           </div>
           <div class="card-footer bg-transparent">
             <div class="d-grid gap-2 d-md-flex justify-content-md-between">
-              <button v-on:click="selectItem" class="btn btn-outline-primary">
+              <button v-on:click.stop="selectItem" class="btn btn-outline-primary">
                 View
               </button>
               <span v-if="license" class="text-warning lh-lg">

@@ -42,6 +42,12 @@ export default {
         this.multiSelectedItems.push(selectedItem);
       }
     },
+    multiSelectItems() {
+      this.clearMultiSelectedItems();
+      for (let index = 0; index < this.results.length; index++) {
+        this.multiSelectItem(this.results[index].item);
+      }
+    },
     clearMultiSelectedItems() {
       this.multiSelectedItems.length = 0;
     },
@@ -57,14 +63,27 @@ export default {
   },
   template: /*html*/ `
       <div>
-        <div class="mb-2 text-muted" v-show="hasResult">
-          <span class="mt-1 mb-2 d-inline-block" v-text="total"></span> Results
-          <span v-show="hasMultiSelectedItem">
-           - <span class="mt-1 mb-2 d-inline-block" v-text="multiSelectedItems.length"></span> Selected
-           <button v-on:click="openGenerateBuildGradle" class="btn btn-outline-primary btn-sm">
-            Generate build.gradle
-           </button>
-          </span>
+        <div v-show="hasResult">
+          <div class="d-flex align-items-baseline mb-2 text-muted">
+            <span v-text="total"></span>&nbsp;Results
+            |
+            <button v-on:click="multiSelectItems" class="btn btn-link btn-sm">
+              Select All
+            </button>
+            <button v-on:click="clearMultiSelectedItems" class="btn btn-link btn-sm">
+              Clear All
+            </button>
+            <div v-show="hasMultiSelectedItem">
+              <div class="d-flex align-items-baseline">
+                |
+                &nbsp;<span class="d-inline-block" v-text="multiSelectedItems.length"></span>&nbsp;Selected
+                |&nbsp;
+                <button v-on:click="openGenerateBuildGradle" class="btn btn-outline-primary btn-sm">
+                  Generate build.gradle
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="row row-cols-1 row-cols-lg-4 row-cols-md-3 row-cols-sm-2 g-4">
           <optional-component-item v-for="result in results" v-bind:result="result" v-bind:key="result.artifactId" v-bind:logo-location-url="logoLocationUrl" v-on:select-item="selectItem" v-on:multi-select-item="multiSelectItem" v-bind:is-multi-selected="isMultiSelectedItem(result.item)" >
