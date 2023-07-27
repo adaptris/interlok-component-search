@@ -74,7 +74,7 @@ export default {
       <div class="list-group-item h-100" v-on:click="mutliSelectItem" v-bind:class="{ 'border-info': isMultiSelected, 'border-warning': deprecatedText && !isMultiSelected }">
         <div class="row align-items-center">
           <div class="col-sm-1">
-            <img v-bind:src="logo" v-on:error="setDefaultLogo"v-bind:alt="artifactId" width="60" height="60">
+            <img v-bind:src="logo" v-on:error="setDefaultLogo" v-bind:alt="artifactId" width="60" height="60">
           </div>
           <div class="col-sm-10">
             <div class="row align-items-center">

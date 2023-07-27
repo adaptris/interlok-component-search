@@ -10,7 +10,8 @@ export default {
         versions: Array,
         dataLocation: String,
         logoLocationUrl: String,
-        hasHeader: Boolean
+        hasHeader: Boolean,
+        listView: Boolean,
     },
     data: function () {
         return {
@@ -179,7 +180,7 @@ export default {
                                     <i class="fa fa-spinner fa-spin"></i>
                                 </div>
                             </div>
-                            <optional-component-list v-bind:logo-location-url="logoLocationUrl" v-bind:results="results" v-bind:total="total">
+                            <optional-component-list v-bind:logo-location-url="logoLocationUrl" v-bind:results="results" v-bind:total="total" v-bind:listView="listView">
                             </optional-component-list>
                         </div>
                     </div>

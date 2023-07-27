@@ -14,13 +14,13 @@ export default {
     logoLocationUrl: String,
     total: Number,
     results: Array,
+    listView: Boolean
   },
   data: function () {
     return {
       selectedItem: null,
       multiSelectedItems: [],
       generateBuildGradleOpened: false,
-      listView: false
     }
   },
   computed: {
@@ -67,7 +67,7 @@ export default {
       this.generateBuildGradleOpened = true;
     },
     toggleView() {
-      this.listView = !this.listView;
+      this.$router.push({path: this.$route.fullPath, query: {listView: !this.listView}})
     }
   },
   template: /*html*/ `
@@ -93,10 +93,12 @@ export default {
               </div>
             </div>
             &nbsp;
-            <button v-on:click="toggleView" class="btn btn-outline-primary btn-sm">
-              <i v-if="gridView" class="fa fa-fw fa-th-list" title="List view"></i>
-              <i v-if="listView" class="fa fa-fw fa-th-large" title="Grid view"></i>
-            </button>
+            <router-link v-if="gridView" class="btn btn-outline-primary btn-sm" to="?listView=true">
+              <i class="fa fa-fw fa-th-list" title="List view"></i>
+            </router-link>
+            <router-link v-if="listView" class="btn btn-outline-primary btn-sm" to="?listView=false">
+              <i class="fa fa-fw fa-th-large" title="Grid view"></i>
+            </router-link>
           </div>
         </div>
         <div v-if="gridView" class="row row-cols-1 row-cols-lg-4 row-cols-md-3 row-cols-sm-2 g-4">

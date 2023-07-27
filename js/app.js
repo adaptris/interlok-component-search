@@ -46,7 +46,7 @@ const NotFound = {
 const routes = [
   { path: "/", redirect: "/component-search" },
   { path: "/component-search", component: ComponentSearchPage },
-  { path: "/optional-component-search", component: OptionalComponentSearchPage },
+  { path: "/optional-component-search", component: OptionalComponentSearchPage, props: route => ({ listView: route.query.listView == "true" }) },
   { path: "/:catchAll(.*)", component: NotFound }
 ];
 
