@@ -1,10 +1,12 @@
-import OptionalComponentItem from './Item.js';
+import OptionalComponentItemCard from './ItemCard.js';
+import OptionalComponentItemRow from './ItemRow.js';
 import ItemDetails from './ItemDetails.js';
 import GenerateBuildGradle from './GenerateBuildGradle.js';
 
 export default {
   components: {
-    "optional-component-item": OptionalComponentItem,
+    "optional-component-item-card": OptionalComponentItemCard,
+    "optional-component-item-row": OptionalComponentItemRow,
     "optional-component-item-details": ItemDetails,
     "optional-component-generate-build-gradle": GenerateBuildGradle,
   },
@@ -17,7 +19,8 @@ export default {
     return {
       selectedItem: null,
       multiSelectedItems: [],
-      generateBuildGradleOpened: false
+      generateBuildGradleOpened: false,
+      listView: false
     }
   },
   computed: {
@@ -26,6 +29,9 @@ export default {
     },
     hasMultiSelectedItem: function () {
       return this.multiSelectedItems && this.multiSelectedItems.length > 0;
+    },
+    gridView: function () {
+      return !this.listView;
     }
   },
   methods: {
@@ -59,6 +65,9 @@ export default {
     },
     openGenerateBuildGradle() {
       this.generateBuildGradleOpened = true;
+    },
+    toggleView() {
+      this.listView = !this.listView;
     }
   },
   template: /*html*/ `
@@ -83,11 +92,20 @@ export default {
                 </button>
               </div>
             </div>
+            &nbsp;
+            <button v-on:click="toggleView" class="btn btn-outline-primary btn-sm">
+              <i v-if="gridView" class="fa fa-fw fa-th-list" title="List view"></i>
+              <i v-if="listView" class="fa fa-fw fa-th-large" title="Grid view"></i>
+            </button>
           </div>
         </div>
-        <div class="row row-cols-1 row-cols-lg-4 row-cols-md-3 row-cols-sm-2 g-4">
-          <optional-component-item v-for="result in results" v-bind:result="result" v-bind:key="result.artifactId" v-bind:logo-location-url="logoLocationUrl" v-on:select-item="selectItem" v-on:multi-select-item="multiSelectItem" v-bind:is-multi-selected="isMultiSelectedItem(result.item)" >
-          </optional-component-item>
+        <div v-if="gridView" class="row row-cols-1 row-cols-lg-4 row-cols-md-3 row-cols-sm-2 g-4">
+          <optional-component-item-card v-for="result in results" v-bind:result="result" v-bind:key="result.artifactId" v-bind:logo-location-url="logoLocationUrl" v-on:select-item="selectItem" v-on:multi-select-item="multiSelectItem" v-bind:is-multi-selected="isMultiSelectedItem(result.item)" >
+          </optional-component-item-card>
+        </div>
+        <div v-if="listView" class="list-group list-group-striped g-4">
+          <optional-component-item-row v-for="result in results" v-bind:result="result" v-bind:key="result.artifactId" v-bind:logo-location-url="logoLocationUrl" v-on:select-item="selectItem" v-on:multi-select-item="multiSelectItem" v-bind:is-multi-selected="isMultiSelectedItem(result.item)" >
+          </optional-component-item-row>
         </div>
         <div v-if="selectedItem" class="modal fade show d-block" tabindex="-1" aria-labelledby="optionalComponentModal" aria-hidden="true">
           <div class="modal-dialog modal-dialog-scrollable modal-lg">

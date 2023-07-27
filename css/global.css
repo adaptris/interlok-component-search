@@ -157,6 +157,15 @@
     padding-left: 1rem;
 }
 
+.list-group-item:hover {
+	transform: scale(1.005);
+	box-shadow: 0 .125rem .25rem rgba(0,0,0,.075)!important;
+}
+
+.list-group.list-group-striped .list-group-item:nth-of-type(odd){
+    background: rgba(0,0,0,.05);
+}
+
 .modal-tabs {
 	display: flex;
 	flex-shrink: 0;
