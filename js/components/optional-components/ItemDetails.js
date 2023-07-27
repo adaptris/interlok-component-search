@@ -41,6 +41,12 @@ export default {
     },
     isReadme: function () {
       return this.selectedTab === "readme";
+    },
+    deprecatedText: function () {
+      return this.item.deprecatedText || "";
+    },
+    isDeprecated: function () {
+      return this.deprecatedText != "";
     }
   },
   methods: {
@@ -68,6 +74,9 @@ export default {
             {{ name }}
           </h5>
           <button type="button" class="btn-close" aria-label="Close" v-on:click="close"></button>
+        </div>
+        <div v-if="isDeprecated"class="alert alert-warning" role="alert">
+          {{deprecatedText}}
         </div>
         <div class="modal-tabs">
           <ul class="nav nav-tabs nav-fill w-100">
