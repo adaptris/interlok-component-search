@@ -17,7 +17,7 @@ class InterlokSearch extends HTMLElement {
     <iframe class="interlok-search-iframe"
             src="https://interlok.adaptris.net/interlok-component-search/index-embeddable.html#/${page}"
             frameBorder="0"
-            style="position: fixed; top: 0; bottom: 0; left: 0; right: 0; height: 100%; width: 100%;"/>
+            style="position: absolute; top: 0; bottom: 0; left: 0; right: 0; height: 100%; width: 100%;"/>
     `;
 
     shadow.appendChild( div )
